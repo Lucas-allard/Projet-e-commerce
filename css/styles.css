@@ -74,6 +74,10 @@ img {
   align-items: center;
 }
 
+.header-navbar ul.active {
+  right: 0px;
+}
+
 .header-navbar li {
   position: relative;
 }
@@ -103,10 +107,31 @@ img {
   background-color: var(--text-color-secondary);
 }
 
+.mobile {
+  display: none;
+  align-items: center;
+}
+
+.mobile i {
+  padding-left: 2rem;
+  font-size: 2rem;
+  color: var(--text-color-primary);
+}
+
+.close {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  color: var(--text-color-secondary);
+  font-size: 2rem;
+}
+
 /* Footer */
 
 .footer {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   padding: 5rem;
   font-size: 1.4rem;
@@ -114,8 +139,9 @@ img {
 
 .footer .contact-footer,
 .footer .about-footer,
-.footer .app-footer {
-  margin: 0 1rem;
+.footer .app-footer,
+.footer .account-footer {
+  margin: 0 3rem;
 }
 
 .social-network ul {
@@ -136,7 +162,6 @@ img {
 .logo-store {
   display: flex;
   margin: 2rem 2rem 2rem 0;
-  width: 75%;
 }
 
 .logo-payment {
@@ -163,10 +188,10 @@ img {
 
 .hero {
   background-image: url("../img/hero4.png");
-  background-position: 100% 0;
+  background-position: top 25% right 25%;
   background-size: cover;
   width: 100%;
-  padding: 5rem 5rem;
+  padding: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -219,7 +244,7 @@ img {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin-left: 5rem;
+  margin: 0 2.5rem;
 }
 
 .fe-box {
@@ -398,7 +423,7 @@ img {
 .banner-1 {
   background-image: url("../img/banner/banner1.jpg");
   padding: 10rem;
-  background-position: 0 -100px;
+  background-position: 0;
   background-size: cover;
 }
 
@@ -427,7 +452,6 @@ img {
 .cta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
 }
 
 .cta-1 {
@@ -450,7 +474,7 @@ img {
 
 .cta-3 {
   background-image: url("../img/banner/b17.jpg");
-  background-position: top center;
+  background-position: top 0 right 10%;
   background-size: cover;
   grid-column: 1;
   grid-row-start: 2;
@@ -470,7 +494,7 @@ img {
 
 .cta-5 {
   background-image: url("../img/banner/b18.jpg");
-  background-position: top center;
+  background-position: top 0 right 10%;
   background-size: cover;
   grid-column: 3;
   grid-row-start: 2;
