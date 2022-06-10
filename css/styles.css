@@ -584,3 +584,80 @@ img {
 .notice {
   margin: 1rem;
 }
+
+/* About page */
+
+.about-banner {
+  background-image: url("../img/banner/b2.jpg");
+}
+
+.about-banner-content {
+  padding: 8rem;
+}
+
+.about-banner-content p {
+  color: white;
+  text-align: center;
+  margin: 1rem;
+}
+
+.about-banner-content p:first-child {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.about-banner-content p:nth-child(2) {
+  font-size: 2rem;
+}
+
+.about-section {
+  margin: 0 5rem;
+}
+
+.about-description {
+  display: flex;
+  align-items: center;
+}
+
+.about-description img {
+  width: 50%;
+  margin: 2rem;
+  height: auto;
+}
+
+.about-section h1 {
+  text-align: center;
+  margin: 2rem;
+}
+
+.about-description p {
+  margin: 2rem 0;
+  word-spacing: 1rem;
+  line-height: 1.3;
+}
+
+.about-app span {
+  color: var(--text-color-secondary);
+  text-decoration: underline;
+}
+
+.about-app video {
+  width: calc(100% - 8rem);
+  margin: 4rem 5rem;
+  display: block;
+  border-radius: 5px;
+}
+
+.features-block {
+  padding: 5rem 5rem;
+}
+
+.features-block .features {
+  display: flex;
+  justify-content: center;
+}
+
+.features-block .fe-box {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,4 +1,4 @@
-@media screen and (max-width: 1049px) {
+@media screen and (max-width: 1100px) {
   /* layout */
 
   .header-navbar ul {
@@ -114,6 +114,14 @@
   .notice {
     margin: 1rem 0;
   }
+
+  /* About page */
+
+  .features-block .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 876px) {
@@ -145,6 +153,16 @@
   }
   .slick-prev {
     left: 5px;
+  }
+
+  /* About page */
+
+  .about-description {
+    flex-direction: column;
+  }
+
+  .about-description img {
+    width: 100%;
   }
 }
 
