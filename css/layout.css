@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Reset */
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  font-family: var(--font-family), sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.6rem;
+  width: 100%;
+  background-color: white;
+}
+
+/* General class */
+
+input {
+  display: inline-block;
+}
+
+main {
+  background-color: #e3e6f3;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+/* Common class */
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none!important;
+}
+
+/* Layout */
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 8rem;
+  background-color: var(--athens-gray);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.06);
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.header .logo {
+  padding: 1rem;
+}
+
+.header-navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-navbar ul.active {
+  right: 0px;
+}
+
+.header-navbar li {
+  position: relative;
+}
+
+.header-navbar li a {
+  padding: 1rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color-primary);
+  transition: 0.3s ease;
+}
+
+.header-navbar li a:hover,
+.header-navbar li a.active {
+  color: var(--text-color-secondary);
+}
+
+.header-navbar li a.active::after,
+.header-navbar li a:hover::after {
+  content: "";
+  position: absolute;
+  left: 3rem;
+  bottom: -0.5rem;
+  width: 40%;
+  height: 3px;
+  background-color: var(--text-color-secondary);
+}
+
+.mobile {
+  display: none;
+  align-items: center;
+}
+
+.mobile i {
+  padding-left: 2rem;
+  font-size: 2rem;
+  color: var(--text-color-primary);
+}
+
+.close {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  color: var(--text-color-secondary);
+  font-size: 2rem;
+}
+
+/* Footer */
+
+.footer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 5rem;
+  font-size: 1.4rem;
+}
+
+.footer .contact-footer,
+.footer .about-footer,
+.footer .app-footer,
+.footer .account-footer {
+  margin: 0 3rem;
+}
+
+.social-network ul {
+  display: flex;
+}
+
+.social-network i {
+  font-size: 3rem;
+  color: var(--text-color-primary);
+  margin: 1rem 2rem 0 0;
+  transition: 0.3s ease-in-out;
+}
+
+.social-network i:hover {
+  color: var(--text-color-secondary);
+}
+
+.logo-store {
+  display: flex;
+  margin: 2rem 2rem 2rem 0;
+}
+
+.logo-payment {
+  margin: 2rem 0;
+  width: 50%;
+}
+
+.footer p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color-secondary);
+}
+
+.footer ul li {
+  margin: 1rem 0;
+}
+
+.contact-footer .logo {
+  width: 200px;
+  margin-left: -0.5rem;
+}

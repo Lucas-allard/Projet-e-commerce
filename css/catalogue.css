@@ -1,0 +1,84 @@
+/* General */
+.catalogue {
+  padding-top: 3rem;
+  background-color: white;
+}
+
+.catalogue h1 {
+  margin: 1rem 0;
+}
+
+/* Search Products */
+
+.search-products-block {
+  margin: 2rem 0;
+}
+
+.search-form {
+  padding: 1rem;
+  background-color: rgba(227, 230, 243, 0.5);
+  border-radius: 2em;
+}
+
+.search-form:hover,
+.search-form:focus-within {
+  box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.3);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field input {
+  width: 100%;
+  margin: 0 2rem;
+  padding: 1rem 0;
+  font-size: 2rem;
+  background-color: rgba(227, 230, 243, 0.2);
+  border: none;
+}
+
+.field i {
+  margin: 0 2rem;
+  font-size: 3rem;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+}
+
+/* Products Block */
+
+.products-block {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.products-block .product-box {
+  width: 30%;
+  margin: 2rem 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.products-block .product-box:hover {
+  transform: scale(1.1);
+}
+
+/* Products Content */
+
+.products-content {
+  padding: 2rem 0;
+}
+
+.products-content h2 {
+  text-align: left;
+}
+
+.products-content div {
+  margin: 2rem 0;
+  width: 70%;
+}
+

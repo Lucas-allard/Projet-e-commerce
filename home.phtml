@@ -1,45 +1,47 @@
-<section class="hero">
-  <div class="hero-block-content">
-    <p>Promotion anniversaire</p>
-    <h1>Camiseta fête ses 10 ans !</h1>
-    <div class="hero-content">
-      <p>
-        Toujours plus de produits, <br />
-        toujours plus de promotions.
-      </p>
-      <p>
-        <em
-          >Economisez 20% sur votre commande avec ce code :
-          <strong>24BD</strong></em
-        >
-      </p>
-      <button>Acheter maintenant</button>
+<section class="hero container">
+  <div class="">
+    <div class="hero-block-content">
+      <p>Promotion anniversaire</p>
+      <h1>Camiseta fête ses 10 ans !</h1>
+      <div class="hero-content">
+        <p>
+          Toujours plus de produits, <br />
+          toujours plus de promotions.
+        </p>
+        <p>
+          <em
+            >Economisez 20% sur votre commande avec ce code :
+            <strong>24BD</strong></em
+          >
+        </p>
+        <button>Acheter maintenant</button>
+      </div>
     </div>
-  </div>
-  <div class="features">
-    <div class="fe-box">
-      <img src="img/features/f1.png" alt="click & collect" />
-      <p>Click & collect</p>
-    </div>
-    <div class="fe-box">
-      <img src="img/features/f2.png" alt="envoi gratuit" />
-      <p>Envoi gratuit</p>
-    </div>
-    <div class="fe-box">
-      <img src="img/features/f3.png" alt="economie" />
-      <p>Economie</p>
-    </div>
-    <div class="fe-box">
-      <img src="img/features/f4.png" alt="promotion" />
-      <p>Promotions</p>
-    </div>
-    <div class="fe-box">
-      <img src="img/features/f5.png" alt="ecologique" />
-      <p>Ecologique</p>
-    </div>
-    <div class="fe-box">
-      <img src="img/features/f6.png" alt="SAV 24/24H" />
-      <p>SAV 24/24H</p>
+    <div class="features">
+      <div class="fe-box">
+        <img src="img/features/f1.png" alt="click & collect" />
+        <p>Click & collect</p>
+      </div>
+      <div class="fe-box">
+        <img src="img/features/f2.png" alt="envoi gratuit" />
+        <p>Envoi gratuit</p>
+      </div>
+      <div class="fe-box">
+        <img src="img/features/f3.png" alt="economie" />
+        <p>Economie</p>
+      </div>
+      <div class="fe-box">
+        <img src="img/features/f4.png" alt="promotion" />
+        <p>Promotions</p>
+      </div>
+      <div class="fe-box">
+        <img src="img/features/f5.png" alt="ecologique" />
+        <p>Ecologique</p>
+      </div>
+      <div class="fe-box">
+        <img src="img/features/f6.png" alt="SAV 24/24H" />
+        <p>SAV 24/24H</p>
+      </div>
     </div>
   </div>
 </section>
@@ -47,14 +49,15 @@
   <h2>Collection été 2022</h2>
   <p>Nouveau design, nouvelles couleurs</p>
   <div class="responsive">
+    <?php foreach ($sliderItems1 as $sliderItem) : ?>
     <div>
       <div class="product-box">
-        <img src="img/products/f1.jpg" alt="Chemise colorée" />
+        <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
         <div class="product-content">
           <div class="product-description">
             <h3>Camiseta</h3>
-            <p>Chemise manche courte - Fleur</p>
-            <p><em>Coton bio </em></p>
+            <p><?= $sliderItem["product_name"] ?></p>
+            <p><em><?= $sliderItem["product_description"] ?></em></p>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -62,159 +65,13 @@
             <i class="fas fa-star"></i>
           </div>
           <div class="product-price">
-            <p>75 €</p>
+            <p><?= $sliderItem["MSRP"] ?> €</p>
             <i class="fas fa-shopping-basket"></i>
           </div>
         </div>
       </div>
     </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f2.jpg" alt="Chemise fleur1" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise manche courte - Fleur</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f3.jpg" alt="Chemise fleur2" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise manche courte - Fleur</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f4.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise manche courte - Fleur</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f5.jpg" alt="Chemise fleur1" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise manche courte - Fleur</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f6.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise velour - Bi-color</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f7.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Pantacour - Fleur</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/f8.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Tunique - Bohème</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>    
   </div>
 </section>
 <div class="banner banner-1">
@@ -229,14 +86,15 @@
   <h2>Nouveaux arrivages</h2>
   <p>Nouveau design, nouvelles couleurs</p>
   <div class="responsive">
+    <?php foreach ($sliderItems2 as $sliderItem) : ?>
     <div>
       <div class="product-box">
-        <img src="img/products/n1.jpg" alt="Chemise colorée" />
+        <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
         <div class="product-content">
           <div class="product-description">
             <h3>Camiseta</h3>
-            <p>Chemise col mao - Ciel</p>
-            <p><em>Coton bio </em></p>
+            <p><?= $sliderItem["product_name"] ?></p>
+            <p><em><?= $sliderItem["product_description"] ?></em></p>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -244,162 +102,16 @@
             <i class="fas fa-star"></i>
           </div>
           <div class="product-price">
-            <p>75 €</p>
+            <p><?= $sliderItem["MSRP"] ?> €</p>
             <i class="fas fa-shopping-basket"></i>
           </div>
         </div>
       </div>
     </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n2.jpg" alt="Chemise fleur1" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise rayure - Gris chine</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n3.jpg" alt="Chemise fleur2" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise col mao - Blanc</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n4.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise manche courte</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n5.jpg" alt="Chemise fleur1" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise jeans - Ciel</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n6.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Short rayé - Blanc</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n7.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise à poche - Camel</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="product-box">
-        <img src="img/products/n8.jpg" alt="Chemise colorée" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p>Chemise manche courte col mao - Noir</p>
-            <p><em>Coton bio </em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="product-price">
-            <p>75 €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
 </section>
-<section class="cta-block">
+<section class="cta-block container">
   <div class="cta-grid">
     <div class="cta cta-1">
       <p>Offre du moment</p>

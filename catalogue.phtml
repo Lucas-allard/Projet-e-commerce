@@ -1,0 +1,56 @@
+
+<section class="catalogue ">
+  <div class="container">
+    <h1>Nos vêtements</h1>
+    <div class="search-products-block">
+      <form class="search-form">
+        <div class="field">
+          <input type="text" name="search" id="search" placeholder="Recherche d'articles">
+          <i class="fas fa-search"></i>
+        </div>
+      </form>
+    </div>
+    <div class="products-block" id="search-result">
+    </div>
+    <div class="products-block" id="products">
+      <?php foreach ($productsList as $product) : ?>
+          <div class="product-box">
+            <img src="<?= $product["image_src"] ?>" alt="<?= $product["image_alt"] ?>" />
+            <div class="product-content">
+              <div class="product-description">
+                <h3>Camiseta</h3>
+                <p><?= $product["product_name"] ?></p>
+                <p><em><?= $product["product_description"] ?></em></p>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="product-price">
+                <p><?= $product["MSRP"] ?> €</p>
+                <i class="fas fa-shopping-basket"></i>
+              </div>
+            </div>
+          </div>
+      <?php endforeach; ?>
+    </div>
+    <div class="products-content">
+      <h2>Les chemises</h2>
+      <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, labore vero. Nostrum dolorem alias voluptatem quasi! Modi maiores nesciunt mollitia vitae iusto, asperiores inventore perferendis commodi magni quisquam ad facilis eligendi minima error, eius iste doloremque at expedita, tenetur ratione!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione qui sunt autem dignissimos accusamus, maiores unde voluptatem necessitatibus aliquid beatae?</p>
+      </div>
+      <h2>Les tuniques</h2>
+      <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, labore vero. Nostrum dolorem alias voluptatem quasi! Modi maiores nesciunt mollitia vitae iusto, asperiores inventore perferendis commodi magni quisquam ad facilis eligendi minima error, eius iste doloremque at expedita, tenetur ratione!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione qui sunt autem dignissimos accusamus, maiores unde voluptatem necessitatibus aliquid beatae?</p>
+      </div>
+      <h2>Les pantacourts</h2>
+      <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, labore vero. Nostrum dolorem alias voluptatem quasi! Modi maiores nesciunt mollitia vitae iusto, asperiores inventore perferendis commodi magni quisquam ad facilis eligendi minima error, eius iste doloremque at expedita, tenetur ratione!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione qui sunt autem dignissimos accusamus, maiores unde voluptatem necessitatibus aliquid beatae?</p>
+      </div>
+    </div>
+  </div>
+</section>
