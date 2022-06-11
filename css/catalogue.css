@@ -2,6 +2,7 @@
 .catalogue {
   padding-top: 3rem;
   background-color: white;
+  position: relative;
 }
 
 .catalogue h1 {
@@ -12,10 +13,15 @@
 
 .search-products-block {
   margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search-form {
   padding: 1rem;
+  margin: 0 2rem;
+  width: 80%;
   background-color: rgba(227, 230, 243, 0.5);
   border-radius: 2em;
 }
@@ -47,6 +53,19 @@
   cursor: pointer;
 }
 
+.sort-button-block {
+  margin: 0 2rem;
+}
+
+.sort-button-block button {
+  padding: 2rem;
+  background-color: rgba(227, 230, 243, 0.2);
+}
+
+.sort-button-block button:hover {
+  background-color: var(--text-color-secondary);
+}
+
 /* Products Block */
 
 .products-block {
@@ -67,6 +86,12 @@
   transform: scale(1.1);
 }
 
+@media screen and (max-width: 876px) {
+  .products-block .product-box {
+    width: 50%;
+  }
+}
+
 /* Products Content */
 
 .products-content {
@@ -82,3 +107,63 @@
   width: 70%;
 }
 
+@media screen and (max-width: 876px) {
+  .products-block .product-box {
+    width: calc(50% - 4rem);
+    margin: 2rem 2rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .products-block .product-box {
+    flex-direction: column;
+    width: 90%;
+  }
+}
+
+/* Sort Modal */
+
+.sort-modal {
+  position: fixed;
+  width: 350px;
+  top: 0;
+  bottom: 0;
+  right: -500px;
+  z-index: 1000;
+  background-color: var(--athens-gray);
+  transition: all 0.3s;
+}
+
+.sort-modal.active {
+  right: 0;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-head h2 {
+  margin: 2rem 1rem;
+}
+
+.modal-head button {
+  margin: 2rem 1rem;
+  color: white;
+  background-color: var(--text-color-secondary);
+}
+
+.modal-head button:hover {
+  margin: 2rem 1rem;
+  color: var(--text-color-secondary);
+  background-color: white;
+}
+
+.modal-body {
+  padding: 2rem 1rem;
+}
+
+.modal-body ul li {
+  margin: 2rem 0;
+  text-transform: uppercase;
+}

@@ -24,7 +24,8 @@
 }
 
 .about-section {
-  margin: 0 5rem;
+  background-color: white;
+  padding-top: 2rem;
 }
 
 .about-description {
@@ -38,9 +39,9 @@
   height: auto;
 }
 
-.about-section h1 {
+.about-section h1,
+.about-section h2 {
   text-align: center;
-  margin: 2rem;
 }
 
 .about-description p {
@@ -49,20 +50,27 @@
   line-height: 1.3;
 }
 
+.about-app {
+  padding: 4rem 5rem;
+}
+
+.about-app h2 {
+  padding-bottom: 2rem;
+}
+
 .about-app span {
   color: var(--text-color-secondary);
   text-decoration: underline;
 }
 
 .about-app video {
-  width: calc(100% - 8rem);
-  margin: 4rem 5rem;
+  width: 100%;
   display: block;
   border-radius: 5px;
 }
 
 .features-block {
-  padding: 5rem 5rem;
+  background-color: white;
 }
 
 .features-block .features {
@@ -73,4 +81,22 @@
 .features-block .fe-box {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1100px) {
+  .features-block .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .about-description {
+    flex-direction: column;
+  }
+
+  .about-description img {
+    width: 100%;
+  }
 }

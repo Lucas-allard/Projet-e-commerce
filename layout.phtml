@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/catalogue.css" />
+    <link rel="stylesheet" href="css/product.css">    
     <link rel="stylesheet" href="css/about.css" />
     <link rel="stylesheet" href="css/media_queries.css" />
   </head>
@@ -47,80 +48,82 @@
     <?php require $template.".phtml"?>
     </main>
     <footer class="footer">
-      <div class="contact-footer">
-        <div class="logo">
-          <img src="img/logo2.png" alt="logo" />
+      <div class="container">
+        <div class="contact-footer">
+          <div class="logo">
+            <img src="img/logo2.png" alt="logo" />
+          </div>
+          <p>Contact</p>
+          <address>
+            <ul>
+              <li>
+                <strong>Adresse :</strong> 5 boulevard de la liberté - 35000
+                Rennes
+              </li>
+              <li><strong>Téléphone :</strong> 06 57 82 12 32</li>
+              <li>Ouvert du lundi au samedi de 10h à 19h30</li>
+            </ul>
+          </address>
+          <div class="social-network">
+            <p>Réseaux sociaux</p>
+            <ul>
+              <li>
+                <a href="https://www.facebook.com/"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/fr/"
+                  ><i class="fab fa-tiktok"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/fr/"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p>Contact</p>
-        <address>
+        <div class="about-footer">
+          <p>A propos</p>
           <ul>
-            <li>
-              <strong>Adresse :</strong> 5 boulevard de la liberté - 35000
-              Rennes
-            </li>
-            <li><strong>Téléphone :</strong> 06 57 82 12 32</li>
-            <li>Ouvert du lundi au samedi de 10h à 19h30</li>
+            <li><a href="about.php">A propos de nous</a></li>
+            <li><a href="">Information sur la livraison</a></li>
+            <li><a href="privacy_policy.php">Politique de confidentialité</a></li>
+            <li><a href="">Conditions générales</a></li>
+            <li><a href="contact.php">Nous contacter</a></li>
           </ul>
-        </address>
-        <div class="social-network">
-          <p>Réseaux sociaux</p>
+        </div>
+        <div class="account-footer">
+          <p>Mon compte</p>
           <ul>
-            <li>
-              <a href="https://www.facebook.com/"
-                ><i class="fab fa-facebook"></i
-              ></a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </li>
-            <li>
-              <a href="https://www.tiktok.com/fr/"
-                ><i class="fab fa-tiktok"></i
-              ></a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/fr/"
-                ><i class="fab fa-youtube"></i
-              ></a>
-            </li>
+            <li><a href="">Se connecter</a></li>
+            <li><a href="basket.html">Mon panier</a></li>
+            <li><a href="">Ma liste de souhait</a></li>
+            <li><a href="">Suivre ma commande</a></li>
+            <li><a href="">Aide</a></li>
           </ul>
         </div>
-      </div>
-      <div class="about-footer">
-        <p>A propos</p>
-        <ul>
-          <li><a href="about.php">A propos de nous</a></li>
-          <li><a href="">Information sur la livraison</a></li>
-          <li><a href="privacy_policy.php">Politique de confidentialité</a></li>
-          <li><a href="">Conditions générales</a></li>
-          <li><a href="contact.php">Nous contacter</a></li>
-        </ul>
-      </div>
-      <div class="account-footer">
-        <p>Mon compte</p>
-        <ul>
-          <li><a href="">Se connecter</a></li>
-          <li><a href="basket.html">Mon panier</a></li>
-          <li><a href="">Ma liste de souhait</a></li>
-          <li><a href="">Suivre ma commande</a></li>
-          <li><a href="">Aide</a></li>
-        </ul>
-      </div>
-      <div class="app-footer">
-        <p>Installer l'application</p>
-        <div class="logo-store">
-          <a href="https://www.apple.com/fr/store"
-            ><img src="img/pay/app.jpg" alt="applestore"
-          /></a>
-          <a href="https://play.google.com/store"
-            ><img src="img/pay/play.jpg" alt="playstore"
-          /></a>
-        </div>
-        <p>Paiements sécurisés</p>
-        <div class="logo-payment">
-          <img src="img/pay/pay.png" alt="logo credit card" />
+        <div class="app-footer">
+          <p>Installer l'application</p>
+          <div class="logo-store">
+            <a href="https://www.apple.com/fr/store"
+              ><img src="img/pay/app.jpg" alt="applestore"
+            /></a>
+            <a href="https://play.google.com/store"
+              ><img src="img/pay/play.jpg" alt="playstore"
+            /></a>
+          </div>
+          <p>Paiements sécurisés</p>
+          <div class="logo-payment">
+            <img src="img/pay/pay.png" alt="logo credit card" />
+          </div>
         </div>
       </div>
     </footer>
@@ -133,8 +136,9 @@
       type="text/javascript"
       src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"
     ></script>
-    <script src="js/index.js"></script>
+    <script src="js/responsive_navbar.js"></script>
     <script src="js/slick.js"></script>
     <script src="js/search_bar.js"></script>
+    <script src="js/modal_sort.js"></script>
   </body>
 </html>

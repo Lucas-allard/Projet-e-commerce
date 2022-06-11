@@ -2,7 +2,7 @@
 // home page
 $(document).ready(function () {
   $(".responsive").slick({
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 3,
@@ -14,7 +14,6 @@ $(document).ready(function () {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true,
         },
       },
       {

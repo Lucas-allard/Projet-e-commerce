@@ -6,8 +6,7 @@ $query1 = $connexion -> prepare('
                                 SELECT
                                   products.`id_product`,
                                   `product_name`,
-                                  `product_line`,
-                                  `product_description`,
+                                  `product_alt`,
                                   `MSRP`,
                                   `image_alt`,
                                   `image_src`
@@ -26,8 +25,7 @@ $query2 = $connexion -> prepare('
                                 SELECT
                                   products.`id_product`,
                                   `product_name`,
-                                  `product_line`,
-                                  `product_description`,
+                                  `product_alt`,
                                   `MSRP`,
                                   `image_alt`,
                                   `image_src`

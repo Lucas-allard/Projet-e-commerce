@@ -9,18 +9,22 @@
           <i class="fas fa-search"></i>
         </div>
       </form>
+      <div class="sort-button-block">
+        <button id="open-modal">Filtrer & trier <i class="fas fa-sort"></i></button>
+      </div>
     </div>
     <div class="products-block" id="search-result">
     </div>
     <div class="products-block" id="products">
       <?php foreach ($productsList as $product) : ?>
-          <div class="product-box">
+        <div class="product-box">
+          <a href="product.php?id_product=<?= $product["id_product"] ?>">
             <img src="<?= $product["image_src"] ?>" alt="<?= $product["image_alt"] ?>" />
             <div class="product-content">
               <div class="product-description">
                 <h3>Camiseta</h3>
                 <p><?= $product["product_name"] ?></p>
-                <p><em><?= $product["product_description"] ?></em></p>
+                <p><em><?= $product["product_alt"] ?></em></p>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -32,7 +36,8 @@
                 <i class="fas fa-shopping-basket"></i>
               </div>
             </div>
-          </div>
+          </a>
+        </div>
       <?php endforeach; ?>
     </div>
     <div class="products-content">
@@ -54,3 +59,16 @@
     </div>
   </div>
 </section>
+<div class="sort-modal" id="sort-modal">
+  <div class="modal-head">
+    <h2>Filtrer & trier</h2>
+    <button id="close-modal"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <h3>Trier par</h3>
+    <ul>
+      <li><a href="">prix (bas/haut)</a></li>
+      <li><a href="">prix (haut/bas)</a></li>
+    </ul>
+  </div>
+</div>

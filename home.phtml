@@ -14,7 +14,7 @@
             <strong>24BD</strong></em
           >
         </p>
-        <button>Acheter maintenant</button>
+        <a href="catalogue.php">Acheter maintenant</a>
       </div>
     </div>
     <div class="features">
@@ -52,23 +52,25 @@
     <?php foreach ($sliderItems1 as $sliderItem) : ?>
     <div>
       <div class="product-box">
-        <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p><?= $sliderItem["product_name"] ?></p>
-            <p><em><?= $sliderItem["product_description"] ?></em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+        <a href="product.php?id_product=<?= $sliderItem["id_product"] ?>">
+          <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
+          <div class="product-content">
+            <div class="product-description">
+              <h3>Camiseta</h3>
+              <p><?= $sliderItem["product_name"] ?></p>
+              <p><em><?= $sliderItem["product_alt"] ?></em></p>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="product-price">
+              <p><?= $sliderItem["MSRP"] ?> €</p>
+              <i class="fas fa-shopping-basket"></i>
+            </div>
           </div>
-          <div class="product-price">
-            <p><?= $sliderItem["MSRP"] ?> €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
     <?php endforeach; ?>    
@@ -89,59 +91,63 @@
     <?php foreach ($sliderItems2 as $sliderItem) : ?>
     <div>
       <div class="product-box">
-        <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
-        <div class="product-content">
-          <div class="product-description">
-            <h3>Camiseta</h3>
-            <p><?= $sliderItem["product_name"] ?></p>
-            <p><em><?= $sliderItem["product_description"] ?></em></p>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+        <a href="product.php?id_product=<?= $sliderItem["id_product"] ?>">
+          <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
+          <div class="product-content">
+            <div class="product-description">
+              <h3>Camiseta</h3>
+              <p><?= $sliderItem["product_name"] ?></p>
+              <p><em><?= $sliderItem["product_alt"] ?></em></p>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="product-price">
+              <p><?= $sliderItem["MSRP"] ?> €</p>
+              <i class="fas fa-shopping-basket"></i>
+            </div>
           </div>
-          <div class="product-price">
-            <p><?= $sliderItem["MSRP"] ?> €</p>
-            <i class="fas fa-shopping-basket"></i>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
     <?php endforeach; ?>
   </div>
 </section>
-<section class="cta-block container">
-  <div class="cta-grid">
-    <div class="cta cta-1">
-      <p>Offre du moment</p>
-      <p>1 acheté, 1 offert</p>
-      <p>Valable sur la nouvelle collection</p>
-      <a href="#">En savoir plus</a>
-    </div>
-    <div class="cta cta-2">
-      <p>Découvrez notre nouvelle collection</p>
-      <p>Nouveaux vêtements bio</p>
-      <p>Pour tous les goûts</p>
-      <a href="#">En savoir plus</a>
-    </div>
-    <div class="cta cta-3">
-      <p>Partenariat écologique</p>
-      <p>Envoyez nous vos anciens vêtements</p>
-      <p>20% de remise sur vos futurs achats</p>
-      <a href="#">En savoir plus</a>
-    </div>
-    <div class="cta cta-4">
-      <p>Découvrez notre application</p>
-      <p>Commandez en toute sérénité n'importe où !</p>
-      <p>Promotion lancement</p>
-      <a href="#">En savoir plus</a>
-    </div>
-    <div class="cta cta-5">
-      <p>Blog mode</p>
-      <p>Les derniers tendances</p>
-      <p>La mode dans le monde</p>
-      <a href="#">En savoir plus</a>
+<section class="cta-block">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta cta-1">
+        <p>Offre du moment</p>
+        <p>1 acheté, 1 offert</p>
+        <p>Valable sur la nouvelle collection</p>
+        <a href="#">En savoir plus</a>
+      </div>
+      <div class="cta cta-2">
+        <p>Découvrez notre nouvelle collection</p>
+        <p>Nouveaux vêtements bio</p>
+        <p>Pour tous les goûts</p>
+        <a href="#">En savoir plus</a>
+      </div>
+      <div class="cta cta-3">
+        <p>Partenariat écologique</p>
+        <p>Envoyez nous vos anciens vêtements</p>
+        <p>20% de remise sur vos futurs achats</p>
+        <a href="#">En savoir plus</a>
+      </div>
+      <div class="cta cta-4">
+        <p>Découvrez notre application</p>
+        <p>Commandez en toute sérénité n'importe où !</p>
+        <p>Promotion lancement</p>
+        <a href="#">En savoir plus</a>
+      </div>
+      <div class="cta cta-5">
+        <p>Blog mode</p>
+        <p>Les derniers tendances</p>
+        <p>La mode dans le monde</p>
+        <a href="#">En savoir plus</a>
+      </div>
     </div>
   </div>
 </section>
