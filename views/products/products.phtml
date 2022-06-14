@@ -18,7 +18,7 @@
     <div class="products-block" id="products">
       <?php foreach ($productsList as $product) : ?>
         <div class="product-box">
-          <a href="product.php?id_product=<?= $product["id_product"] ?>">
+          <a href="index.php?action=detailsProduct&id_product=<?= $product["id_product"] ?>">
             <img src="<?= $product["image_src"] ?>" alt="<?= $product["image_alt"] ?>" />
             <div class="product-content">
               <div class="product-description">

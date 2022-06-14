@@ -2,7 +2,7 @@ function onAjaxRequest() {
   console.log("hello");
   let search = $("#search").val();
   if (search.length > 0) {
-    $.get("./search.php", "search=" + search, displayProducts);
+    $.get("../../index.php", "search=" + search, displayProducts);
     $("#products").addClass("hidden");
   } else {
     $("#search-result").empty();

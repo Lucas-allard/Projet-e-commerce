@@ -52,7 +52,7 @@
     <?php foreach ($sliderItems1 as $sliderItem) : ?>
     <div>
       <div class="product-box">
-        <a href="product.php?id_product=<?= $sliderItem["id_product"] ?>">
+        <a href="index.php?action=detailsProduct&id_product=<?= $sliderItem["id_product"] ?>">
           <img src="<?= $sliderItem["image_src"] ?>" alt="<?= $sliderItem["image_alt"] ?>" />
           <div class="product-content">
             <div class="product-description">
@@ -151,24 +151,4 @@
     </div>
   </div>
 </section>
-<div class="newsletter-block">
-  <div class="newsletter-content">
-    <p>Inscrivez-vous à notre newsletter</p>
-    <p>Soyez informés des <span>dernières tendances</span></p>
-  </div>
-  <div class="newsletter-form">
-    <form action="POST">
-      <div class="form">
-        <input type="email" placeholder="Entrez votre adresse mail" required />
-        <button class="form-button">Envoyer</button>
-      </div>
-      <div class="notice">
-        <input type="checkbox" required />
-        <span class="notice-copy"
-          >J'accepte que mon adresse électronique soit conservée et utilisée
-          pour recevoir la newsletter mensuelle.</span
-        >
-      </div>
-    </form>
-  </div>
-</div>
+

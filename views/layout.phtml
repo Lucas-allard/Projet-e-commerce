@@ -9,29 +9,29 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     />
-    <link rel="stylesheet" href="css/slick.css" />
-    <link rel="stylesheet" href="css/slick-theme.css" />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/catalogue.css" />
-    <link rel="stylesheet" href="css/product.css">    
-    <link rel="stylesheet" href="css/about.css" />
-    <link rel="stylesheet" href="css/media_queries.css" />
+    <link rel="stylesheet" href="views/css/slick.css" />
+    <link rel="stylesheet" href="views/css/slick-theme.css" />
+    <link rel="stylesheet" href="views/css/variables.css" />
+    <link rel="stylesheet" href="views/css/layout.css" />
+    <link rel="stylesheet" href="views/css/home.css" />
+    <link rel="stylesheet" href="views/css/catalogue.css" />
+    <link rel="stylesheet" href="views/css/product.css">    
+    <link rel="stylesheet" href="views/css/about.css" />
+    <link rel="stylesheet" href="views/css/media_queries.css" />
   </head>
   <body>
     <header class="header">
       <div class="logo">
-        <img src="img/logo2.png" alt="logo" />
+        <img src="views/img/logo2.png" alt="logo" />
       </div>
       <nav class="header-navbar">
         <ul id="navbar">
           <li id="close" class="close"><i class="fas fa-times"></i></li>
-          <li><a href="home.php">Accueil</a></li>
-          <li><a href="catalogue.php">Catalogue</a></li>
-          <li><a href="blog.php">Blog</a></li>
-          <li><a href="about.php">A propos</a></li>
-          <li><a href="contact.php">Contact</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="index.php?action=products">Catalogue</a></li>
+          <li><a href="index.php?action=blog">Blog</a></li>
+          <li><a href="index.php?action=about">A propos</a></li>
+          <li><a href="index.php?action=contact">Contact</a></li>
           <li>
             <a href="basket.html" class="lg-bag"
               ><i class="fas fa-shopping-bag"></i
@@ -45,13 +45,38 @@
       </div>
     </header>
     <main>
-    <?php require $template.".phtml"?>
+      <?php if(isset($message)): ?>
+        <p> <?= $message ?> </p>
+      <?php endif; ?>
+      <!-- Affichage du template lié à la vue -->
+      <?php include $template.".phtml"; ?>
+      <div class="newsletter-block">
+        <div class="newsletter-content">
+          <p>Inscrivez-vous à notre newsletter</p>
+          <p>Soyez informés des <span>dernières tendances</span></p>
+        </div>
+        <div class="newsletter-form">
+          <form action="POST">
+            <div class="form">
+              <input type="email" placeholder="Entrez votre adresse mail" required />
+              <button class="form-button">Envoyer</button>
+            </div>
+            <div class="notice">
+              <input type="checkbox" required />
+              <span class="notice-copy"
+                >J'accepte que mon adresse électronique soit conservée et utilisée
+                pour recevoir la newsletter mensuelle.</span
+              >
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <div class="container">
         <div class="contact-footer">
           <div class="logo">
-            <img src="img/logo2.png" alt="logo" />
+            <img src="views/img/logo2.png" alt="logo" />
           </div>
           <p>Contact</p>
           <address>
@@ -114,15 +139,15 @@
           <p>Installer l'application</p>
           <div class="logo-store">
             <a href="https://www.apple.com/fr/store"
-              ><img src="img/pay/app.jpg" alt="applestore"
+              ><img src="views/img/pay/app.jpg" alt="applestore"
             /></a>
             <a href="https://play.google.com/store"
-              ><img src="img/pay/play.jpg" alt="playstore"
+              ><img src="views/img/pay/play.jpg" alt="playstore"
             /></a>
           </div>
           <p>Paiements sécurisés</p>
           <div class="logo-payment">
-            <img src="img/pay/pay.png" alt="logo credit card" />
+            <img src="views/img/pay/pay.png" alt="logo credit card" />
           </div>
         </div>
       </div>
@@ -136,9 +161,9 @@
       type="text/javascript"
       src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"
     ></script>
-    <script src="js/responsive_navbar.js"></script>
-    <script src="js/slick.js"></script>
-    <script src="js/search_bar.js"></script>
-    <script src="js/modal_sort.js"></script>
+    <script src="views/js/responsive_navbar.js"></script>
+    <script src="views/js/slick.js"></script>
+    <script src="views/js/search_bar.js"></script>
+    <script src="views/js/modal_sort.js"></script>
   </body>
 </html>

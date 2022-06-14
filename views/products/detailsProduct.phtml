@@ -2,10 +2,10 @@
   <div class="container">
     <div class="gallery">
       <div class="img-xl">
-        <img src="<?= $product["image_src"] ?>" alt="<?= $product["image_alt"] ?>">
+        <img src="<?= $productDetails["image_src"] ?>" alt="<?= $productDetails["image_alt"] ?>">
       </div>
       <div class="img-sm">
-        <a href=""><img src="<?= $product["image_src"] ?>" alt="<?= $product["image_alt"] ?>"></a>
+        <a href=""><img src="<?= $productDetails["image_src"] ?>" alt="<?= $productDetails["image_alt"] ?>"></a>
         <a href=""><img src="img/products/n5.jpg" alt="Chemise"></a>
         <a href=""><img src="img/products/n6.jpg" alt="Short"></a>
         <a href=""><img src="img/products/n7.jpg" alt="Chemise"></a>
@@ -13,11 +13,11 @@
     </div>
     <div class="product-details">
       <h2>Camiseta</h2>
-      <h3><?= $product["product_name"] ?></h3>
+      <h3><?= $productDetails["product_name"] ?></h3>
       <div class="product-detail">
-        <p><em><?= $product["product_alt"] ?></em></p>
-        <p><span> A partir de <?= $product["MSRP"] ?>€ </span><em>TVA incluse</em></p>
-        <p><?= $product["product_description"] ?></p>
+        <p><em><?= $productDetails["product_alt"] ?></em></p>
+        <p><span> A partir de <?= $productDetails["MSRP"] ?>€ </span><em>TVA incluse</em></p>
+        <p><?= $productDetails["product_description"] ?></p>
         <div class="clearfix">
           <button>Ajouter au panier<i class="fas fa-shopping-bag"></i></button>
         </div>
