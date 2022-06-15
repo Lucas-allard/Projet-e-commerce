@@ -332,3 +332,115 @@ td:nth-child(even) {
     flex-direction: column;
   }
 }
+
+/* Modal */
+
+/* Backdrop */
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.modal-backdrop.active {
+  bottom: 0;
+  opacity: 1;
+}
+
+
+/* Login & create account */
+
+.login-modal {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  z-index: 1001;
+  width: 700px;
+  margin: 0 auto;
+  display: none;
+}
+
+.login-modal.active {
+  display: block;
+}
+
+.login-modal .close {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  left: 0px;
+  cursor: pointer;
+}
+
+.create-account-block {
+  background-color: white;
+}
+
+.create-account {
+  width: 700px;
+  margin: 2rem auto;
+}
+
+.login-modal form,
+.create-account form {
+  width: 100%;
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.login-modal h1,
+.create-account h1 {
+  width: 38%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.login-modal input[type="text"],
+.login-modal input[type="password"],
+.create-account input[type="text"],
+.create-account input[type="password"],
+.create-account input[type="date"],
+.create-account input[type="mail"],
+.create-account a {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.login-modal a,
+.create-account a {
+  display: block;
+  text-align: center;
+}
+
+.login-modal input[type="submit"],
+.login-modal a,
+.create-account input[type="submit"],
+.create-account a {
+  background-color: var(--text-color-secondary);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-modal input[type="submit"]:hover,
+.login-modal a:hover,
+.create-account input[type="submit"]:hover,
+.create-account a:hover {
+  background-color: white;
+  color: #53af57;
+  border: 1px solid #53af57;
+}

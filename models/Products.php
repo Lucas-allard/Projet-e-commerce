@@ -31,6 +31,73 @@ class Products extends DataBase
    
     return $productsList;
   }
+  
+   public function getProductsSortByLowPrice()
+  {
+    $query = $this -> connexion -> prepare('
+                                            SELECT
+                                              products.`id_product`,
+                                              `product_name`,
+                                              `product_alt`,
+                                              `MSRP`,
+                                              `image_alt`,
+                                              `image_src`
+                                            FROM
+                                              products
+                                            INNER JOIN images ON products.id_product = images.id_product
+                                            ORDER BY MSRP ASC
+                                            ');
+    $query -> execute();
+    
+    $productsList = $query -> fetchAll();
+    
+    return $productsList;
+  } 
+  
+  public function getProductsSortByHighPrice()
+  {
+    $query = $this -> connexion -> prepare('
+                                            SELECT
+                                              products.`id_product`,
+                                              `product_name`,
+                                              `product_alt`,
+                                              `MSRP`,
+                                              `image_alt`,
+                                              `image_src`
+                                            FROM
+                                              products
+                                            INNER JOIN images ON products.id_product = images.id_product
+                                            ORDER BY MSRP DESC
+                                            ');
+    $query -> execute();
+    
+    $productsList = $query -> fetchAll();
+    
+    return $productsList;
+  }
+  
+   public function searchProduct($search)
+  {
+    $query = $this -> connexion -> prepare('
+                          SELECT
+                            products.`id_product`,
+                            `product_name`,
+                            `product_description`,
+                            `product_alt`,
+                            `MSRP`,
+                            `image_alt`,
+                            `image_src`
+                          FROM
+                            products
+                          INNER JOIN images ON products.id_product = images.id_product
+                          WHERE `product_name` LIKE ?
+                          ');
+    $query -> execute(["%".$search."%"]);
+    
+    $searchResult = $query -> fetchAll();
+    
+    return $searchResult;
+  }
 
   public function getProductDetails(): ?array
   {
@@ -69,30 +136,5 @@ class Products extends DataBase
     return $deliveryDate;
   }
 
-  public function searchProduct(): ?array
-  {
-    if (array_key_exists("search", $_GET)) {
-      $search = $_GET["search"];
-    }
-
-    $query = $this -> prepare('
-                              SELECT
-                                products.`id_product`,
-                                `product_name`,
-                                `product_description`,
-                                `product_alt`,
-                                `MSRP`,
-                                `image_alt`,
-                                `image_src`
-                              FROM
-                                products
-                              INNER JOIN images ON products.id_product = images.id_product
-                              WHERE `product_name` LIKE ?
-                              ');
-    $query -> execute(["%".$search."%"]);
-
-    $searchProduct = $query -> fetchAll();
-
-    echo json_encode($searchProduct);
-  }
+ 
 }

@@ -21,6 +21,24 @@ class ProductsController
 
     require 'views/layout.phtml';
   }
+  
+  public function productsSortByHighPrice():void
+  {
+    $productsList = $this -> products -> getProductsSortByHighPrice();
+    
+    $template = 'products/productsSortByHighPrice';
+    
+    require 'views/layout.phtml';
+  }
+  
+  public function productsSortByLowPrice():void
+  {
+    $productsList = $this -> products -> getProductsSortByLowPrice();
+    
+    $template = 'products/productsSortByLowPrice';
+    
+    require 'views/layout.phtml';
+  }
 
   public function detailsProduct():void
   {
@@ -31,4 +49,13 @@ class ProductsController
 
     require 'views/layout.phtml';
   }
+
+  public function searchAjax($search)
+  {
+    $searchResult = $this -> products -> searchProduct($search);
+    
+    echo json_encode($searchResult);
+  }
 }
+
+

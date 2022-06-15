@@ -1,15 +1,25 @@
 <div class="product-block">
   <div class="container">
-    <div class="gallery">
+    <div id="gallery" class="gallery">
       <div class="img-xl">
-        <img src="<?= $productDetails["image_src"] ?>" alt="<?= $productDetails["image_alt"] ?>">
+        <div>
+          <img src="views/<?= $productDetails["image_src"] ?>" alt="<?= $productDetails["image_alt"] ?>">
+        </div>
       </div>
-      <div class="img-sm">
-        <a href=""><img src="<?= $productDetails["image_src"] ?>" alt="<?= $productDetails["image_alt"] ?>"></a>
-        <a href=""><img src="img/products/n5.jpg" alt="Chemise"></a>
-        <a href=""><img src="img/products/n6.jpg" alt="Short"></a>
-        <a href=""><img src="img/products/n7.jpg" alt="Chemise"></a>
-      </div>
+      <ul class="img-sm">
+        <li>
+          <a href="views/<?= $productDetails["image_src"] ?>"><img src="views/<?= $productDetails["image_src"] ?>" alt="<?= $productDetails["image_alt"] ?>"></a>
+        </li>
+        <li>
+          <a href="views/img/products/n5.jpg"><img src="views/img/products/n5.jpg" alt="Chemise"></a>
+        </li>
+        <li>
+          <a href="views/img/products/n6.jpg"><img src="views/img/products/n6.jpg" alt="Short"></a>
+        </li>
+        <li>
+          <a href="views/img/products/n7.jpg"><img src="views/img/products/n7.jpg" alt="Chemise"></a>
+        </li>
+      </ul>
     </div>
     <div class="product-details">
       <h2>Camiseta</h2>
