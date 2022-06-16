@@ -1,8 +1,7 @@
 function onAjaxRequest() {
-  console.log("hello");
   let search = $("#search").val();
   if (search.length > 0) {
-    $.get("../../index.php", "search=" + search, displayProducts);
+    console.log($.get("index.php?action=products", "search=" + search, displayProducts));
     $("#products").addClass("hidden");
   } else {
     $("#search-result").empty();
@@ -12,13 +11,11 @@ function onAjaxRequest() {
 
 function displayProducts(products) {
   products = JSON.parse(products);
-  console.log($("#search-result"));
   $("#search-result").empty();
   for (let i = 0; i < products.length; i++) {
-    console.log(products[i]);
     $("#search-result").append(`<div class="product-box">
-                                  <a href="product.php?id_product=${products[i][0]}">
-                                    <img src="${products[i][6]}" alt="${products[i][5]}" />
+                                  <a href="index.php?action=detailsProduct&id_product=${products[i][0]}">
+                                    <img src="views/${products[i][6]}" alt="${products[i][5]}" />
                                     <div class="product-content">
                                       <div class="product-description">
                                         <h3>Camiseta</h3>
@@ -42,5 +39,4 @@ function displayProducts(products) {
 
 window.addEventListener("DOMContentLoaded", (event) => {
   $("#search").on("input", onAjaxRequest);
-  console.log("hello");
 });

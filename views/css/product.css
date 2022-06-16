@@ -16,7 +16,8 @@
   flex-direction: column;
 }
 
-.gallery > div {
+.gallery > div,
+.gallery > ul {
   margin: 2rem 5rem 0 0;
 }
 

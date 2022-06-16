@@ -147,11 +147,14 @@
   margin: 2rem 1rem;
 }
 
-.modal-head button {
+.modal-head .close {
   margin: 2rem 1rem;
   color: white;
+  display: block;
+  position: initial;
   background-color: var(--text-color-secondary);
 }
+
 
 .modal-head button:hover {
   margin: 2rem 1rem;

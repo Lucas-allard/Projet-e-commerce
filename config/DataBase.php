@@ -4,10 +4,10 @@ declare(strict_types=1);
 class DataBase
 {
     // attributs 
-    private const SERVEUR = "localhost";
-    private const USER = "root";
-    private const MDP = "Aqwzsx123456!";
-    private const BDD = "camiseta";
+    private const SERVEUR = "db.3wa.io";
+    private const USER = "lucasallard";
+    private const MDP = "25f57d89c63d66d4c5f1cbb5771b9683";
+    private const BDD = "lucasallard_camiseta";
     private $connexion;
     
     //méthodes 
