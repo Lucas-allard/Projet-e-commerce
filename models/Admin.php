@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace models;
+
+use config\DataBase;
+
 class Admin extends DataBase 
 {
     private $connexion;
@@ -21,7 +25,7 @@ class Admin extends DataBase
         $query -> execute([$username,$password]);
     }
     
-    public function getAdminByUsername(string $username): bool|array
+    public function getAdminByUsername(string $username)
     {
         $query = $this -> connexion -> prepare('
                                             SELECT

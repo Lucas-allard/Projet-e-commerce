@@ -66,8 +66,12 @@
               <i class="fas fa-star"></i>
             </div>
             <div class="product-price">
-              <p><?= $sliderItem["MSRP"] ?> €</p>
-              <i class="fas fa-shopping-basket"></i>
+              <p><?= $sliderItem["price"] ?> €</p>
+              <?php if($this -> isConnectUser()) : ?>
+              <a href="index.php?action=add_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>&id_product=<?= $sliderItem["id_product"] ?>">
+                <i class="fas fa-shopping-basket"></i>
+              </a>
+              <?php endif; ?>
             </div>
           </div>
         </a>
@@ -105,8 +109,12 @@
               <i class="fas fa-star"></i>
             </div>
             <div class="product-price">
-              <p><?= $sliderItem["MSRP"] ?> €</p>
-              <i class="fas fa-shopping-basket"></i>
+              <p><?= $sliderItem["price"] ?> €</p>
+              <?php if($this -> isConnectUser()) : ?>
+              <a href="index.php?action=add_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>&id_product=<?= $sliderItem["id_product"] ?>">
+                <i class="fas fa-shopping-basket"></i>
+              </a>
+              <?php endif; ?>
             </div>
           </div>
         </a>

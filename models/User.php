@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-class User extends Database
+namespace models;
+
+use config\DataBase;
+
+class User extends DataBase
 {
     private $connexion;
     
@@ -43,21 +47,11 @@ class User extends Database
         return $result;
     }
     
-    public function getUserByMail(string $email): bool|array 
+    public function getUserByMail(string $email)
     {
         $query = $this -> connexion -> prepare('
                                                 SELECT
-                                                    `id_user`,
-                                                    `lastname`,
-                                                    `name`,
-                                                    username,
-                                                    `phone`,
-                                                    `email`,
-                                                    `address`,
-                                                    `zip_code`,
-                                                    `city`,
-                                                    `birth`,
-                                                    `password`
+                                                    `email`,                                                   
                                                 FROM
                                                     `users`
                                                 WHERE
@@ -68,7 +62,7 @@ class User extends Database
         return $result;
     }
     
-    public function getUserByUsername(string $username): bool|array
+    public function getUserByUsername(string $username)
     {
         $query = $this -> connexion -> prepare('
                                                 SELECT

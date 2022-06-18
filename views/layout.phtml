@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="views/css/catalogue.css" />
     <link rel="stylesheet" href="views/css/product.css">    
     <link rel="stylesheet" href="views/css/about.css" />
+    <link rel="stylesheet" href="views/css/cart.css" />
   </head>
   <body>
     <header class="header">
       <div class="logo">
-        <img src="views/img/logo2.png" alt="logo" />
+        <a href="index.php"><img src="views/img/logo2.png" alt="logo" /></a>  
       </div>
       <nav class="header-navbar">
         <ul id="navbar">
@@ -30,26 +31,37 @@
           <li><a href="index.php?action=products">Catalogue</a></li>
           <li><a href="index.php?action=blog">Blog</a></li>
           <li><a href="index.php?action=contact">Contact</a></li>
-          <?php if (isset($_SESSION['admin']) || isset($_SESSION["user"])) :?>
+          <?php if ($this -> isConnectAdmin() || $this -> isConnectUser()) :?>
+            <?php if ($this -> isConnectAdmin()) : ?>
+              <li><a href="">Espace admin</a></li>
+            <?php endif; ?>
           <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
           <?php else : ?>
           <li><a id="user-button">Connexion</a></li>
           <?php endif; ?>
+          <?php if ($this -> isConnectAdmin() || $this -> isConnectUser()) :?>
           <li>
-            <a href="index.php?action=basket" class="lg-bag"
+            <a href="index.php?action=get_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>" id="cart-button" class="lg-bag"
               ><i class="fas fa-shopping-bag"></i
             ></a>
           </li>
+          <?php endif; ?>
         </ul>
       </nav>
       <div class="mobile">
-        <a href="index.php?action=basket"><i class="fas fa-shopping-bag"></i></a>
-        <i class="fas fa-outdent" id="bar"></i>
+      <a href="index.php?action=get_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>" id="cart-button" class="lg-bag"
+              ><i class="fas fa-shopping-bag"></i
+            ><?= count($_SESSION["user"]["panier"]) ?></a>
+      <i class="fas fa-outdent" id="bar"></i>
       </div>
     </header>
     <main>
       <?php if(isset($message)): ?>
         <p> <?= $message ?> </p>
+      <?php endif; ?>
+
+      <?php if(array_key_exists("message", $_GET)): ?>
+        <p> <?= $_GET["message"] ?> </p>
       <?php endif; ?>
       <!-- Affichage du template lié à la vue -->
       <?php include $template.".phtml"; ?>
@@ -79,7 +91,7 @@
       <div class="container">
         <div class="contact-footer">
           <div class="logo">
-            <img src="views/img/logo2.png" alt="logo" />
+            <a href="index.php"><img src="views/img/logo2.png" alt="logo" /></a>    
           </div>
           <p>Contact</p>
           <address>
@@ -131,10 +143,16 @@
         <div class="account-footer">
           <p>Mon compte</p>
           <ul>
-            <li><a href="#" id="user-button2">Se connecter</a></li>
-            <li><a href="index.php?action=basket">Mon panier</a></li>
+            <?php if ($this -> isConnectUser()) : ?>
+            <li><a href="index.php?action=deconnexion" id="user-button2">Se déconnecter</a></li>
+            <?php else : ?> 
+            <li><a href="index.php?action=login" id="user-button2">Se connecter</a></li>
+            <?php endif; ?>
+            <?php if ($this -> isConnectUser()) :?>
+            <li><a href="index.php?action=get_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>">Mon panier</a></li>
             <li><a href="">Ma liste de souhait</a></li>
             <li><a href="">Suivre ma commande</a></li>
+            <?php endif; ?>
             <li><a href="">Aide</a></li>
           </ul>
         </div>
@@ -158,7 +176,7 @@
     <div id="modal-backdrop" class="modal-backdrop"></div>
     <div id="login-modal" class="login-modal">         
       <form action="index.php?action=login" method="POST">
-          <div id="user-modal"><a href="" class="close" ><i class="fas fa-times"></i></a></div>
+          <div id="user-modal"><a href="#" class="close" ><i class="fas fa-times"></i></a></div>
           <h1>Connexion</h1>
           <?php if(isset($message)): ?>
             <p> <?= $message ?> </p>
@@ -183,21 +201,23 @@
     <script src="views/js/responsive_navbar.js"></script>
     <script src="views/js/slick.js"></script>
     <script src="views/js/search_bar.js"></script>
-    <script src="views/js/Modal.js"></script>
     <script src="views/js/Gallery.js"></script>
+    <script src="views/js/Modal.js"></script>
     <script>
       let gallery = new Gallery("#gallery > div img", "#gallery > ul a");
+
       let modalConnexion = new Modal("#login-modal", "#modal-backdrop");
       modalConnexion.addTrigger("#user-button", "open");
       modalConnexion.addTrigger("#user-modal .close", "close");
       
       let modalConnexion2 = new Modal("#login-modal", "#modal-backdrop");
-      modalConnexion.addTrigger("#user-button2", "open");
-      modalConnexion.addTrigger("#user-modal .close", "close");
+      modalConnexion2.addTrigger("#user-button2", "open");
+      modalConnexion2.addTrigger("#user-modal .close", "close");
       
       let modalSort = new Modal("#sort-modal", "#modal-backdrop");
       modalSort.addTrigger("#sort-button", "open");
       modalSort.addTrigger("#sort-close .close", "close");
+
     </script>
   </body>
 </html>

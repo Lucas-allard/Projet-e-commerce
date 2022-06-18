@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace models;
+
+use config\DataBase;
+
 class Slider extends DataBase 
 {
   private $connexion;
@@ -18,7 +22,7 @@ class Slider extends DataBase
                                             products.`id_product`,
                                             `product_name`,
                                             `product_alt`,
-                                            `MSRP`,
+                                            `price`,
                                             `image_alt`,
                                             `image_src`
                                           FROM
@@ -41,7 +45,7 @@ class Slider extends DataBase
                                             products.`id_product`,
                                             `product_name`,
                                             `product_alt`,
-                                            `MSRP`,
+                                            `price`,
                                             `image_alt`,
                                             `image_src`
                                           FROM

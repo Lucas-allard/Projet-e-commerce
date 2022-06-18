@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-require 'models/About.php';
+namespace controllers;
 
-class AboutController 
+use models\About;
+use controllers\SecurityController;
+
+class AboutController extends SecurityController
 {
   private $about;
 

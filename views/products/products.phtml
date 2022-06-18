@@ -32,8 +32,12 @@
                 <i class="fas fa-star"></i>
               </div>
               <div class="product-price">
-                <p><?= $product["MSRP"] ?> €</p>
-                <i class="fas fa-shopping-basket"></i>
+                <p><?= $product["price"] ?> €</p>
+              <?php if($this -> isConnectUser()) : ?>
+                <a href="index.php?action=add_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>&id_product=<?= $product["id_product"] ?>">
+                  <i class="fas fa-shopping-basket"></i>
+                </a>
+              <?php endif; ?>
               </div>
             </div>
           </a>

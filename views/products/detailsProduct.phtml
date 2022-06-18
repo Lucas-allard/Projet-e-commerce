@@ -26,10 +26,16 @@
       <h3><?= $productDetails["product_name"] ?></h3>
       <div class="product-detail">
         <p><em><?= $productDetails["product_alt"] ?></em></p>
-        <p><span> A partir de <?= $productDetails["MSRP"] ?>€ </span><em>TVA incluse</em></p>
+        <p><span> A partir de <?= $productDetails["price"] ?>€ </span><em>TVA incluse</em></p>
         <p><?= $productDetails["product_description"] ?></p>
         <div class="clearfix">
-          <button>Ajouter au panier<i class="fas fa-shopping-bag"></i></button>
+          <div id="add-cart">
+          <?php if($this -> isConnectUser()) : ?>
+            <a href="index.php?action=add_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>&id_product=<?= $productDetails["id_product"] ?>">
+              <button>Ajouter au panier<i class="fas fa-shopping-bag"></i></button>
+            </a>
+            <?php endif; ?>
+          </div>  
         </div>
       </div>
       <div class="product-delivery">

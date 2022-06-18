@@ -1,0 +1,89 @@
+<div class="cart-bg">
+  <div class="container">
+    <h1>Récapitulatif de mon panier</h1>
+    <?php if (empty($cartList)) : ?>
+    <div class="cart-block column">
+      <div class="cart-empty">
+        <p>Aucun article</p>
+      </div>
+      <div class="cart-recap-block">
+        <div>
+          <p>Une question ?  Contactez-nous directement au 05 66 34 13 45</p>
+          <ul>
+            <li>Expédié en 24 heures maximum</li>
+            <li>Frait de port offert dès XXX €</li>
+            <li>Paiement ultra sécurisé</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <?php else : ?>
+    <div class="cart-block">
+      <div class="cart-block-detail">
+        <?php $cpt = 0 ?>
+        <?php foreach ($cartList as $product) : ?>
+          <div class="cart-product-detail">
+            <div>
+              <a href="index.php?action=detailsProduct&id_product=<?= $product["id_product"] ?> "><img src="views/<?= $product["image_src"] ?>" alt="<?= $product["image_alt"] ?>"></a>
+            </div>
+            <div>
+              <p><?= $product["product_name"] ?></p>
+              <p><?= $product["product_alt"] ?></p>
+              <p><?= $product["price"] ?> €</p>
+            </div>
+            <div>
+            <a href="index.php?action=remove_cart&id_user=<?= $_SESSION['user']['id_user'] ?>&id_product=<?= $product["id_product"] ?>">
+                <button>-</button>
+              </a>
+              <form action="#">
+                <input type="number" value="<?= $_SESSION['user']['panier'][$product["id_product"]] ?>">
+              </form>
+              <a href="index.php?action=add_cart&id_user=<?= $_SESSION['user']['id_user'] ?>&id_product=<?= $product["id_product"] ?>">
+                <button>+</button>
+              </a>
+            </div>
+            <div>
+              <p><?= $totalPricePerProduct[$cpt] ?> €</p>
+            </div>
+            <div><a href="index.php?action=del_cart&id_product=<?= $product["id_product"] ?>"><i class="fas fa-trash-alt"></i></a></div>
+          </div>
+          <?php $cpt++ ?>
+        <?php endforeach; ?>
+      </div>
+      <div class="cart-recap-block">
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Produits</td>
+                <td><p><?= $totalProductsPrice ?> €</p></td>
+              </tr>
+              <tr>
+                <td>Livraison</td>
+                <td><?= number_format($deliveryPrice[0],2,","," ") ?> € </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Total</th>
+                <th><?= number_format($totalPrice,2,","," ") ?> €</th>
+              </tr>
+            </tfoot>
+          </table>   
+          <div class="valid-command-button">
+            <a href="">Valider la commande</a>
+          </div>
+        </div>
+        <div>
+          <p>Une question ?  Contactez-nous directement au 05 66 34 13 45</p>
+          <ul>
+            <li>Expédié en 24 heures maximum</li>
+            <li>Frait de port offert dès XXX €</li>
+            <li>Paiement ultra sécurisé</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <?php endif; ?>        
+  </div>
+</div>

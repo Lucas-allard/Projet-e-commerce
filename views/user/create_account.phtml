@@ -2,6 +2,12 @@
     <div class="create-account">         
       <form action="index.php?action=create_account" method="POST">
           <h1>Creation d'un compte</h1>
+          <?php if(isset($message)): ?>
+            <p> <?= $message ?> </p>
+          <?php endif; ?>
+          <?php if(array_key_exists("message", $_GET)): ?>
+            <p> <?= $_GET["message"] ?> </p>
+          <?php endif; ?>
           <label><b>Nom d'utilisateur</b></label>
           <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
           <label><b>Nom</b></label>

@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace models;
+
+use config\DataBase;
+
 class Products extends DataBase 
 {
   private $connexion;
@@ -18,7 +22,7 @@ class Products extends DataBase
                                               products.`id_product`,
                                               `product_name`,
                                               `product_alt`,
-                                              `MSRP`,
+                                              `price`,
                                               `image_alt`,
                                               `image_src`
                                             FROM
@@ -32,6 +36,25 @@ class Products extends DataBase
     return $productsList;
   }
   
+   public function getProductById($id_product) 
+  {
+
+    $query = $this -> connexion -> prepare('
+                                            SELECT
+                                              id_product,
+                                              price
+                                            FROM 
+                                              products
+                                            WHERE
+                                              id_product = ?
+                                          ');
+  
+    $query -> execute([$id_product]);
+    $product = $query -> fetch();
+  
+    return $product;
+  }
+  
    public function getProductsSortByLowPrice()
   {
     $query = $this -> connexion -> prepare('
@@ -39,13 +62,13 @@ class Products extends DataBase
                                               products.`id_product`,
                                               `product_name`,
                                               `product_alt`,
-                                              `MSRP`,
+                                              `price`,
                                               `image_alt`,
                                               `image_src`
                                             FROM
                                               products
                                             INNER JOIN images ON products.id_product = images.id_product
-                                            ORDER BY MSRP ASC
+                                            ORDER BY price ASC
                                             ');
     $query -> execute();
     
@@ -61,13 +84,13 @@ class Products extends DataBase
                                               products.`id_product`,
                                               `product_name`,
                                               `product_alt`,
-                                              `MSRP`,
+                                              `price`,
                                               `image_alt`,
                                               `image_src`
                                             FROM
                                               products
                                             INNER JOIN images ON products.id_product = images.id_product
-                                            ORDER BY MSRP DESC
+                                            ORDER BY price DESC
                                             ');
     $query -> execute();
     
@@ -84,7 +107,7 @@ class Products extends DataBase
                             `product_name`,
                             `product_description`,
                             `product_alt`,
-                            `MSRP`,
+                            `price`,
                             `image_alt`,
                             `image_src`
                           FROM
@@ -111,8 +134,7 @@ class Products extends DataBase
                                               `product_name`,
                                               product_alt,
                                               `product_description`,
-                                              `MSRP`,
-                                              `TVA`,
+                                              `price`,
                                               image_src,
                                               image_alt
                                             FROM
@@ -130,11 +152,24 @@ class Products extends DataBase
 
   public function getDeliveryDate():string
   {
-    $date = new DateTime();
-    $date->add(new DateInterval('P7D')); 
+    $date = new \DateTime();
+    $date->add(new \DateInterval('P7D')); 
     $deliveryDate = $date->format('d-m-Y'); 
     return $deliveryDate;
-  }
+  } 
+  
+  public function getDeliveryPrice($id_product)
+  {
+    $query = $this -> connexion -> prepare('
+                                            SELECT
+                                              delivery_price
+                                            FROM
+                                              products
+                                            ');
+    $query -> execute();
 
- 
+    $deliveryPrice = $query -> fetch();
+   
+    return $deliveryPrice;
+  }
 }

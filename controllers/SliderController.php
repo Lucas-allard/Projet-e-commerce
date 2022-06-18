@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-require "models/Slider.php";
 
-class SliderController
+namespace controllers;
+
+use models\Slider;
+use controllers\SecurityController;
+
+class SliderController extends SecurityController
 {
     private $slider;
 

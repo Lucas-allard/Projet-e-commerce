@@ -352,10 +352,10 @@ td:nth-child(even) {
   opacity: 1;
 }
 
-
 /* Login & create account */
 
-.login-modal {
+.login-modal,
+.cart-modal {
   position: fixed;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -366,11 +366,13 @@ td:nth-child(even) {
   display: none;
 }
 
-.login-modal.active {
+.login-modal.active,
+.cart-modal.active {
   display: block;
 }
 
-.login-modal .close {
+.login-modal .close,
+.cart-modal .close {
   display: flex;
   justify-content: flex-end;
   position: relative;
@@ -378,8 +380,12 @@ td:nth-child(even) {
   cursor: pointer;
 }
 
-.create-account-block {
-  background-color: white;
+.create-account-block,
+.cart-modal {
+  padding: 2rem;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .create-account {

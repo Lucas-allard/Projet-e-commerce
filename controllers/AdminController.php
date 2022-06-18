@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-require 'models/Admin.php';
+namespace controllers;
 
-class AdminController
+use models\Admin;
+use controllers\SecurityController;
+
+class AdminController extends SecurityController
 {
     private $admin;
     
@@ -22,6 +25,8 @@ class AdminController
     
     public function loginAdmin()
     {
+        $template = 'admin/login';
+
         if (isset($_POST["username"]) && !empty($_POST["username"]) && isset($_POST["password"]) && !empty($_POST["password"]))
         {
             $username = $_POST["username"];
@@ -36,24 +41,28 @@ class AdminController
                if (password_verify($password, $result["password"])) 
                {
                    $_SESSION["admin"] = $username;
-                   header("location:index.php?action=admin");
+                   $message = "Connexion validé";
+                   header("location:index.php?message=".$message);
                } 
                else 
                {
-                $message = "Votre mot de passe est incorrect";    
+                $message = "Votre mot de passe est incorrect";
+                header("location:index.php?message=".$message);    
                }
             }
             else {
                 $message = "Votre nom d'utilisateur est incorrect";
+                header("location:index.php?message=".$message);        
             }
         }
+        require "views/layout.phtml";
     }
     
     public function deconnexionAdmin()
     {
         unset($_SESSION["admin"]);
         session_destroy();
-        
-        header("location:index.php");
+        $message = "Vous avez été déconnecté";
+        header("location:index.php?message=" .$message);
     }
 }

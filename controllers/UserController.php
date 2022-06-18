@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
-require "models/User.php";
 
+namespace controllers;
 
-class UserController 
+use models\User;
+use controllers\SecurityController;
+
+class UserController extends SecurityController
 {
     private $user;
     
@@ -57,6 +60,7 @@ class UserController
             else 
             {
                 $message = "Un compte à déja été créer avec ce nom d'utilisateur ou cet adresse mail";
+                header("location:index.php?action=create_account&message=".$message);
             }
         }
         require "views/layout.phtml";
@@ -77,19 +81,25 @@ class UserController
             {
                if (password_verify($password, $result["password"])) 
                {
-                   $_SESSION["user"] = $username;
-                   header("location:index.php");
+                   $_SESSION["user"]["name"] = $username;
+                   $_SESSION["user"]["id_user"] = $result["id_user"];
+                   //panier 
+                   $_SESSION['user']['panier'] = [];
+                
+                   $message = "Connexion validé";
+                  header("location:index.php?message=" .$message);
                } 
                else 
                {
-                $message = "Votre mot de passe est incorrect";
-                header("location:index.php?message=".$message);
+                    $message = "Votre mot de passe est incorrect";
+                    header("location:index.php?message=".$message);
                }
             }
-            else {
+            elseif (!isset($_SESSION["admin"])) 
+            {
                 $message = "Votre nom d'utilisateur est incorrect";
                 header("location:index.php?message=".$message);
-            }
+            } 
         }
     }
     
@@ -97,7 +107,7 @@ class UserController
     {
         unset($_SESSION["user"]);
         session_destroy();
-        
-        header("location:index.php");
+        $message = "Vous avez été déconnecté";
+        header("location:index.php?message=" .$message);
     }
 }

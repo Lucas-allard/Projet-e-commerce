@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace config;
+
 class DataBase
 {
     // attributs 
@@ -11,12 +13,12 @@ class DataBase
     private $connexion;
     
     //méthodes 
-    public function getConnexion(): ?PDO
+    public function getConnexion(): ?\PDO
     {
         $this -> connexion = null;
         try
         {
-            $this -> connexion = new PDO("mysql:host=".self::SERVEUR.";dbname=".self::BDD,self::USER,self::MDP);
+            $this -> connexion = new \PDO("mysql:host=".self::SERVEUR.";dbname=".self::BDD,self::USER,self::MDP);
             // gestion des accents 
             $this -> connexion -> exec("SET CHARACTER SET utf8");// -> appel une méthode d'une classe 
             

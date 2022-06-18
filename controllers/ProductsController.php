@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-require "models/Products.php";
 
-class ProductsController 
+namespace controllers;
+
+use models\Products;
+use controllers\SecurityController;
+
+class ProductsController extends SecurityController
 {
   private $products;
 

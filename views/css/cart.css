@@ -1,0 +1,141 @@
+.cart-bg {
+  background-color: white;
+}
+
+.cart-block {
+  display: flex;
+  padding-top: 2rem;
+}
+
+.cart-block.column {
+  flex-direction: column;
+  height: 50vh;
+}
+.cart-block .cart-block-detail {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.cart-block-detail,
+.cart-recap-block {
+  margin: 2rem;
+}
+
+.cart-block-detail > div + div {
+  border-top: 1px solid var(--athens-gray);
+}
+
+.cart-block-detail .cart-product-detail {
+  display: flex;
+  background-color: #f1f1f1;
+  padding: 2rem;
+}
+
+.cart-block-detail .cart-product-detail div {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-block-detail .cart-product-detail div:first-child {
+  height: auto;
+  width: 25%;
+}
+
+.cart-block-detail .cart-product-detail div:nth-child(2) {
+  width: 25%;
+}
+
+.cart-block-detail .cart-product-detail div:nth-child(3) {
+  width: 30%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cart-block-detail .cart-product-detail div:nth-child(4) {
+  width: 10%;
+  text-align: right;
+}
+
+.cart-block-detail .cart-product-detail div:last-child {
+  width: 10%;
+  text-align: center;
+}
+
+.cart-block-detail .cart-product-detail div p {
+  padding: 1rem;
+}
+
+.cart-block-detail .cart-product-detail div i {
+  font-size: 2rem;
+  color: var(--text-color-secondary);
+}
+
+.cart-product-detail input {
+  width: 80%;
+  padding: 0.5rem 0.5rem;
+  margin: 0 1rem;
+}
+
+.cart-recap-block {
+  width: 40%;
+}
+
+.cart-recap-block div,
+.cart-empty {
+  background-color: #f1f1f1;
+}
+
+.cart-recap-block div + div,
+.cart-empty {
+  margin-top: 2rem;
+}
+
+.cart-recap-block table th {
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--athens-gray);
+}
+
+.cart-recap-block table th:first-child {
+  text-align: left;
+}
+
+.cart-recap-block table th:last-child {
+  text-align: right;
+}
+
+.cart-recap-block div p,
+.cart-recap-block div ul li,
+.cart-empty p {
+  padding: 1rem;
+}
+
+.cart-empty p {
+  text-align: center;
+}
+
+.cart-recap-block div ul li {
+  border-top: 1px solid var(--athens-gray);
+}
+
+.valid-command-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.valid-command-button a {
+  background-color: var(--text-color-secondary);
+  color: white;
+  padding: 2rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.valid-command-button a:hover {
+  background-color: white;
+  color: var(--text-color-secondary);
+}
