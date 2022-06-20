@@ -32,23 +32,26 @@ Several features implemented:
 
 Features :
  Home : 
- 1. Slider
+ 1. Slider (done)
 
  Catalogue :
- 1. Button for sorting products
- 2. Product search bar by name (ajax request)
+ 1. Button for sorting products (done)
+ 2. Product search bar by name (ajax request) (done)
 
  Blog : 
- 1. Like article
- 2. Comment article
- 3. Button for sorting article
- 4. Article search bar by name, category (ajax request)
+ 1. Like article (not done)
+ 2. Comment article (not done)
+ 3. Button for sorting article (not done)
+ 4. Article search bar by name, category (ajax request) (not done)
+
+ Contact : 
+ 1. Not define
 
  Cart :
- 1. Add product in your cart 
- 2. Change quantity 
- 3. Remove product
- 4. Do order
+ 1. Add product in your cart (done)
+ 2. Change quantity (done)
+ 3. Remove product (done)
+ 4. Do order (done)
 
  Admin : 
  1. Add, remove & edit product (in progress)
