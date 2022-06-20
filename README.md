@@ -20,7 +20,10 @@ git clone https://github.com/Lucas-allard/Projet-e-commerce
 2. Open VS Code
 3. Add sql file to phpmy_admin
 4. Define your connection variables in config/DataBase.php
-5. Run index.php
+5. Launch Wamp (or an other serve)
+6. Add the folder to your wamp/www folder
+7. On localhost add a virtual host 
+8. Then run your virtual host and run index.php
 
 
 <!-- USAGE EXAMPLES -->
