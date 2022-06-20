@@ -31,7 +31,10 @@ class Cart extends DataBase
  
   public function addToCart($id_product) 
   {
-
+    if (!isset($_SESSION['user']['panier'])) 
+    {
+        $_SESSION['user']['panier'] = [];
+    }
     if(isset($_SESSION['user']['panier']))
     {
       if(isset($_SESSION['user']['panier'][$id_product]))
@@ -70,8 +73,12 @@ class Cart extends DataBase
   }
   
   public function deleteFromCart($id_product)
+  
   {
-    unset($_SESSION['user']['panier'][$id_product]);
+    if (isset($_SESSION['user']['panier'])) 
+    {
+        unset($_SESSION['user']['panier'][$id_product]);
+    }
   }
 
   public function displayCart($ids) 
@@ -105,27 +112,36 @@ class Cart extends DataBase
   
   public function getTotalPricePerProduct($product,$id_product) 
   {
-    $totalPricePerProduct = [];
-    foreach ($_SESSION['user']['panier'] as $panier) {
-      $quantity = $panier;
-      $totalPricePerProduct[] = $quantity * $product['price'];
+    if (isset($_SESSION['user']['panier'])) 
+    {
+        $totalPricePerProduct = [];
+        foreach ($_SESSION['user']['panier'] as $panier) {
+            $quantity = $panier;
+            $totalPricePerProduct[] = $quantity * $product['price'];
+        }
+        return $totalPricePerProduct;
     }
-    return $totalPricePerProduct;
   }
   
   public function getProductsPrice($product,$id_product) 
   {
-    $totalProductsPrice = 0;
-    foreach ($_SESSION['user']['panier'] as $panier) {
-      $quantity = $panier;
-      $totalProductsPrice += $quantity * $product['price'];
+    if (isset($_SESSION['user']['panier'])) 
+    {
+        $totalProductsPrice = 0;
+        foreach ($_SESSION['user']['panier'] as $panier) {
+            $quantity = $panier;
+            $totalProductsPrice += $quantity * $product['price'];
+        }
+        return $totalProductsPrice;
     }
-    return $totalProductsPrice;
   }
   
   public function getTotalPrice($totalProductsPrice,$deliveryPrice) 
   {
-    $totalPrice = $totalProductsPrice + $deliveryPrice['delivery_price'];
-    return $totalPrice;
+    if (isset($_SESSION['user']['panier'])) 
+    {
+        $totalPrice = $totalProductsPrice + $deliveryPrice['delivery_price'];
+        return $totalPrice;
+    }
   }
 }

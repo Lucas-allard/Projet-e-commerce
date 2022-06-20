@@ -9,6 +9,7 @@ use controllers\AdminController;
 use controllers\ProductsController;
 use controllers\AboutController;
 use controllers\CartController;
+use controllers\OrderController;
 
 function chargerClasse($classe)
 {
@@ -24,6 +25,8 @@ $aboutController = new AboutController();
 $adminController = new AdminController();
 $userController = new UserController();
 $cartController = new CartController();
+$orderController = new OrderController();
+
 
 if (array_key_exists("action",$_GET))
 {
@@ -87,15 +90,27 @@ if (array_key_exists("action",$_GET))
         
       }
       break;
-    
+    case "valid_order":
+      if (array_key_exists("id_user", $_GET))
+      {
+        $orderController -> validOrder($_GET['id_user']);
+        
+      }
+      break;
   }
 }
 elseif (array_key_exists("admin",$_GET))
 {
   switch($_GET["admin"])
-  {
-    case "login":
+  { 
+    case "login": 
       $adminController -> loginAdmin();
+      break;
+    case "add_product": 
+        $productsController -> addProduct();
+      break;
+    default: 
+      header("location:index.php");
       break;
   }
 }

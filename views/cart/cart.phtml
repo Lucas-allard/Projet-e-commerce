@@ -1,4 +1,5 @@
 <div class="cart-bg">
+  <?= var_dump($_SESSION) ?>
   <div class="container">
     <h1>Récapitulatif de mon panier</h1>
     <?php if (empty($cartList)) : ?>
@@ -71,7 +72,7 @@
             </tfoot>
           </table>   
           <div class="valid-command-button">
-            <a href="">Valider la commande</a>
+            <a href="index.php?action=valid_order&id_user=<?= $_SESSION['user']['id_user'] ?>&total=<?= $totalPrice ?>">Valider la commande</a>
           </div>
         </div>
         <div>

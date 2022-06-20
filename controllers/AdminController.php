@@ -25,7 +25,7 @@ class AdminController extends SecurityController
     
     public function loginAdmin()
     {
-        $template = 'admin/login';
+        $template = 'admin/admin';
 
         if (isset($_POST["username"]) && !empty($_POST["username"]) && isset($_POST["password"]) && !empty($_POST["password"]))
         {
@@ -42,7 +42,7 @@ class AdminController extends SecurityController
                {
                    $_SESSION["admin"] = $username;
                    $message = "Connexion validé";
-                   header("location:index.php?message=".$message);
+                   header("location:index.php?admin=login&message=".$message);
                } 
                else 
                {
@@ -57,6 +57,13 @@ class AdminController extends SecurityController
         }
         require "views/layout.phtml";
     }
+
+    public function adminAddProduct() 
+    {
+        $template = 'admin/addProduct.phtml';
+
+        $this -> admin -> addProduct();
+    }
     
     public function deconnexionAdmin()
     {
@@ -65,4 +72,5 @@ class AdminController extends SecurityController
         $message = "Vous avez été déconnecté";
         header("location:index.php?message=" .$message);
     }
+    
 }

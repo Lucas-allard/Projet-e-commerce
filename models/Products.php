@@ -15,6 +15,60 @@ class Products extends DataBase
     $this -> connexion = $this -> getConnexion();
   }
 
+  public function insertProduct($productName, $productDescription, $productAlt, $price, $imageSrc, $imageAlt) 
+  {
+    $test = [];
+
+    $query = $this -> connexion -> prepare('
+                                            INSERT INTO `products`(
+                                              `product_name`,
+                                              `product_description`,
+                                              `product_alt`,
+                                              `price`)
+                                            VALUES(
+                                              ?,
+                                              ?,
+                                              ?,
+                                              ?)
+                                            ');
+    
+    $test[]= $query -> execute([$productName, $productDescription, $productAlt, $price]);
+    
+    $id_product = $this -> connexion -> lastInsertId();
+
+    // $query2 = $this -> connexion -> prepare('
+    //                                           SELECT
+    //                                           `id_product`
+    //                                           FROM
+    //                                               products
+    //                                           ORDER BY
+    //                                               id_product
+    //                                           DESC
+    //                                           LIMIT 1
+    //                                           ');
+    // $query2 -> execute();
+
+    // $id_product = $query2 -> fetch();
+
+    $query3 = $this -> connexion -> prepare('
+                                            INSERT INTO `images`(
+                                              `image_src`,
+                                              `image_alt`,
+                                              `id_product`
+                                              )
+                                            VALUES(
+                                              ?,
+                                              ?,
+                                              ?
+                                              )
+                                            ');
+
+    $test[] = $query3 -> execute ([$imageSrc, $imageAlt, $id_product]);
+
+    var_dump($test);
+    return $test;
+  }
+
   public function getProducts(): ?array 
   {
     $query = $this -> connexion -> prepare('
