@@ -1,2 +1,61 @@
-# Projet-e-commerce - Camiseta
- Site e-commerce fictif de vêtement 
+<!-- ABOUT THE PROJECT -->
+### Built With
+
+* 🐙 Github
+* 💻 VS Code
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+### Installation
+ 
+1. Clone the repo
+```sh
+git clone https://github.com/Lucas-allard/Projet-e-commerce
+```
+2. Open VS Code
+3. Add sql file to phpmy_admin
+4. Define your connection variables in config/DataBase.php
+5. Run index.php
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+Several features implemented: 
+
+Features :
+ Home : 
+ 1. Slider
+
+ Catalogue :
+ 1. Button for sorting products
+ 2. Product search bar by name (ajax request)
+
+ Blog : 
+ 1. Like article
+ 2. Comment article
+ 3. Button for sorting article
+ 4. Article search bar by name, category (ajax request)
+
+ Cart :
+ 1. Add product in your cart 
+ 2. Change quantity 
+ 3. Remove product
+ 4. Do order
+
+ Admin : 
+ 1. Add, remove & edit product (in progress)
+ 2. Add, remove & edit article (not done)
+ 3. Add, remove & edit category (not done)
+ 4. Add, remove & edit comment (not done)
+ 5. See, remove & edit order (not done) 
+<!-- CONTACT -->
+## Contact
+
+Lucas Allard - allard.lucas.97@gmail.com
+
+Project Link: [https://github.com/Lucas-allard/blog](https://github.com/Lucas-allard/blog)
