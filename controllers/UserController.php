@@ -55,12 +55,14 @@ class UserController extends SecurityController
                 {
                     $message = "Votre compte a été crée";
                     header("location:index.php?message=".$message);
+                    exit();
                 }
             }
             else 
             {
                 $message = "Un compte à déja été créer avec ce nom d'utilisateur ou cet adresse mail";
                 header("location:index.php?action=create_account&message=".$message);
+                exit();
             }
         }
         require "views/layout.phtml";
@@ -81,24 +83,26 @@ class UserController extends SecurityController
             {
                if (password_verify($password, $result["password"])) 
                {
-                   $_SESSION["user"]["name"] = $username;
-                   $_SESSION["user"]["id_user"] = $result["id_user"];
-                   //panier 
-                   $_SESSION['user']['panier'] = [];
+                    $_SESSION["user"]["name"] = $username;
+                    $_SESSION["user"]["id_user"] = $result["id_user"];
+                    $_SESSION['user']['panier'] = [];
                 
-                   $message = "Connexion validé";
-                  header("location:index.php?message=" .$message);
+                    $message = "Connexion validé";
+                    header("location:index.php?message=" .$message);
+                    exit();
                } 
                else 
                {
                     $message = "Votre mot de passe est incorrect";
                     header("location:index.php?message=".$message);
+                    exit();
                }
             }
             elseif (!isset($_SESSION["admin"])) 
             {
                 $message = "Votre nom d'utilisateur est incorrect";
                 header("location:index.php?message=".$message);
+                exit();
             } 
         }
     }
@@ -109,5 +113,6 @@ class UserController extends SecurityController
         session_destroy();
         $message = "Vous avez été déconnecté";
         header("location:index.php?message=" .$message);
+        exit();
     }
 }

@@ -1,12 +1,24 @@
 function onAjaxRequest() {
   let search = $("#search").val();
   if (search.length > 0) {
-    console.log($.get("index.php?action=products", "search=" + search, displayProducts));
+    $.get("index.php?action=products", "search=" + search, displayProducts);
     $("#products").addClass("hidden");
   } else {
     $("#search-result").empty();
     $("#products").removeClass("hidden");
   }
+}
+
+function onAjaxRequest2() {
+  let idProduct = $("#product").val();
+  console.log(idProduct);
+  console.log(
+    $.getJSON(
+      "index.php?admin=searchProduct",
+      "product=" + idProduct,
+      displayProduct
+    )
+  );
 }
 
 function displayProducts(products) {
@@ -37,6 +49,19 @@ function displayProducts(products) {
   }
 }
 
+function displayProduct(product) {
+  console.log(product);
+  $("#id_product").val(product[0]);
+  $("#product_name").val(product[1]);
+  $("#product_description").val(product[2]);
+  $("#product_alt").val(product[3]);
+  $("#price").val(product[4]);
+  $("#actual_image_src").val(product[6]);
+  console.log($("#actual_image_src"));
+  $("#image_alt").val(product[5]);
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
   $("#search").on("input", onAjaxRequest);
+  $("#product").on("change", onAjaxRequest2);
 });

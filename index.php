@@ -107,7 +107,16 @@ elseif (array_key_exists("admin",$_GET))
       $adminController -> loginAdmin();
       break;
     case "add_product": 
-        $productsController -> addProduct();
+      $productsController -> addProduct();
+      break;
+    case "edit_product": 
+      $productsController -> editProduct();
+      break;
+    case "searchProduct":
+      if(array_key_exists('product',$_GET)) 
+      {
+        $productsController -> searchProduct($_GET['product']);
+      } 
       break;
     default: 
       header("location:index.php");

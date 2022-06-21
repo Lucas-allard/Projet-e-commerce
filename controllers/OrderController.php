@@ -47,6 +47,7 @@ class OrderController extends SecurityController
             
             $message = "Commande effectuée en attente de validation par le commerçant";
             header("location:index.php?message=" .$message);
+            exit();
           }          
         }
       }

@@ -1,0 +1,43 @@
+<div class="admin-features-block">
+  <h2>Editer un produit</h2>
+  <form action="index.php?admin=edit_product" method="post" class="form-features" enctype="multipart/form-data">
+    <div class="field">
+      <label for="product">Veuillez choisir un produit </label>
+      <select name="product" id="product">
+        <option>0 </option>
+        <?php foreach($products as $product) : ?>
+          <option value="<?= $product["id_product"] ?>"><?= $product["product_name"] ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <input type="hidden" id="id_product" name="id_product">
+    <div class="field">
+      <label for="product_name">Entrer le nom du produit </label>
+      <input type="text" name="product_name" id="product_name" required>
+    </div>
+    <div class="field textarea">
+      <label for="product_description">Entrez la description du produit </label>
+      <textarea name="product_description"  id="product_description"required></textarea>
+    </div>
+    <div class="field">
+      <label for="product_alt">Entrer la composition du produit </label>
+      <input type="text" name="product_alt"  id="product_alt"required>
+    </div>
+    <div class="field">
+      <label for="product_price">Entrer le prix du produit </label>
+      <input type="text" name="price" id="price" required>
+    </div>
+    <div class="field">
+      <label for="image_src">Insérer votre image </label>
+      <input type="file" accept="image/png, image/jpeg" name="image_src"  id="image_src">
+      <input type="hidden" id="actual_image_src" name="actual_image_src">
+    </div>
+    <div class="field">
+      <label for="image_alt">Entrer la description de l'image </label>
+      <input type="text" name="image_alt"  id="image_alt" placeholder="img/products/image" required>
+    </div>
+    <div class="field">
+      <input type="submit" value="Ajouter">
+    </div>
+  </form>
+</div>

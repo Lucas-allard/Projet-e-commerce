@@ -52,10 +52,20 @@
   padding: 2rem;
 }
 
-.form-features .field input {
+.form-features .field input,
+.form-features .field select {
   background-color: white;
   border-radius: 5px;
   padding: 1rem 1rem;
+}
+
+.form-features .field select {
+  width: 100%;
+  border: 0;
+}
+
+.form-features .field input:last-child {
+  cursor: pointer;
 }
 
 .form-features .field.textarea {

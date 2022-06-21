@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace controllers;
 
 use models\Admin;
+use models\Products;
 use controllers\SecurityController;
 
 class AdminController extends SecurityController
@@ -14,18 +15,29 @@ class AdminController extends SecurityController
     public function __construct()
     {
         $this -> admin = new Admin();
+        $this -> products = new Products();
     }
     
-    public function create_admin(){
-        $username = "admin";
-        $password = password_hash("admin", PASSWORD_DEFAULT);
+    // public function create_admin(){
+    //     $username = "admin";
+    //     $password = password_hash("admin", PASSWORD_DEFAULT);
         
-        $this -> admin -> addAdmin($username,$password);
-    }
+    //     $this -> admin -> addAdmin($username,$password);
+    // }
     
     public function loginAdmin()
     {
-        $template = 'admin/admin';
+        if(isset($_GET["add_product"]))
+        {
+            $templateAdmin= 'addProduct';
+        }
+        elseif(isset($_GET["edit_product"]))
+        {
+            $products = $this -> products -> getProducts();
+
+            $templateAdmin = 'editProduct';   
+        }
+        // $templateAddprocuct = 'addProduct';
 
         if (isset($_POST["username"]) && !empty($_POST["username"]) && isset($_POST["password"]) && !empty($_POST["password"]))
         {
@@ -43,26 +55,23 @@ class AdminController extends SecurityController
                    $_SESSION["admin"] = $username;
                    $message = "Connexion validé";
                    header("location:index.php?admin=login&message=".$message);
+                   exit();
                } 
                else 
                {
                 $message = "Votre mot de passe est incorrect";
-                header("location:index.php?message=".$message);    
-               }
+                header("location:index.php?message=".$message);  
+                exit();  
+                }
             }
             else {
                 $message = "Votre nom d'utilisateur est incorrect";
-                header("location:index.php?message=".$message);        
+                header("location:index.php?message=".$message);    
+                exit();    
             }
         }
+        $template = "admin/admin";
         require "views/layout.phtml";
-    }
-
-    public function adminAddProduct() 
-    {
-        $template = 'admin/addProduct.phtml';
-
-        $this -> admin -> addProduct();
     }
     
     public function deconnexionAdmin()
@@ -71,6 +80,8 @@ class AdminController extends SecurityController
         session_destroy();
         $message = "Vous avez été déconnecté";
         header("location:index.php?message=" .$message);
+        exit();
     }
-    
+ 
+   
 }

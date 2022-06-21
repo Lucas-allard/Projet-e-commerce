@@ -35,7 +35,10 @@
           <?php if ($this -> isConnectAdmin() || $this -> isConnectUser()) :?>
           <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
           <?php else : ?>
-          <li><a id="user-button">Connexion</a></li>
+          <li><a href="#" id="user-button">Connexion</a></li>
+          <?php endif; ?>
+          <?php if ($this -> isConnectAdmin()) :?>
+            <li><a href="index.php?admin=login">Espace administrateur</a></li>
           <?php endif; ?>
           <?php if ($this -> isConnectUser()) :?>
           <li>
@@ -46,14 +49,16 @@
           <?php endif; ?>
         </ul>
       </nav>
-      <?php if($this -> isConnectUser()) : ?>
+      
       <div class="mobile">
+      <?php if($this -> isConnectUser()) : ?>
       <a href="index.php?action=get_cart&id_user=<?= $_SESSION["user"]["id_user"] ?>" id="cart-button" class="lg-bag"
               ><i class="fas fa-shopping-bag"></i
             ><?= count($_SESSION["user"]["panier"]) ?></a>
+      <?php endif; ?>
       <i class="fas fa-outdent" id="bar"></i>
       </div>
-      <?php endif; ?>
+      
     </header>
     <main>
       <?php if(isset($message)): ?>
@@ -65,6 +70,7 @@
       <?php endif; ?>
       <!-- Affichage du template lié à la vue -->
       <?php include $template.".phtml"; ?>
+      <?php if (isset($_SESSION["user"])) :?>
       <div class="newsletter-block">
         <div class="newsletter-content">
           <p>Inscrivez-vous à notre newsletter</p>
@@ -86,6 +92,7 @@
           </form>
         </div>
       </div>
+      <?php endif; ?>
     </main>
     <footer class="footer">
       <div class="container">
@@ -200,7 +207,7 @@
     ></script>
     <script src="views/js/responsive_navbar.js"></script>
     <script src="views/js/slick.js"></script>
-    <script src="views/js/search_bar.js"></script>
+    <script src="views/js/ajax_request.js"></script>
     <script src="views/js/Gallery.js"></script>
     <script src="views/js/Modal.js"></script>
     <script>

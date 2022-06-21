@@ -60,6 +60,7 @@ public function addCart($id_product)
     }
     
     header('location:index.php?action=get_cart&id_user='.$_SESSION["user"]["id_user"]);
+    exit();
   }
 
   public function removeCart($id_product)
@@ -68,6 +69,7 @@ public function addCart($id_product)
       $this -> cart -> removeFromCart($id_product);
 
       header('location:index.php?action=get_cart&id_user='.$_SESSION['user']['id_user']);
+      exit();
     }
     else 
     {
@@ -82,6 +84,7 @@ public function addCart($id_product)
       $this -> cart -> deleteFromCart($id_product);
 
       header('location:index.php?action=get_cart&id_user='.$_SESSION['user']['id_user']);
+      exit();
     }
     else 
     {

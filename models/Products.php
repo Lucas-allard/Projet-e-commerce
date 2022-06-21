@@ -36,21 +36,7 @@ class Products extends DataBase
     
     $id_product = $this -> connexion -> lastInsertId();
 
-    // $query2 = $this -> connexion -> prepare('
-    //                                           SELECT
-    //                                           `id_product`
-    //                                           FROM
-    //                                               products
-    //                                           ORDER BY
-    //                                               id_product
-    //                                           DESC
-    //                                           LIMIT 1
-    //                                           ');
-    // $query2 -> execute();
-
-    // $id_product = $query2 -> fetch();
-
-    $query3 = $this -> connexion -> prepare('
+    $query2 = $this -> connexion -> prepare('
                                             INSERT INTO `images`(
                                               `image_src`,
                                               `image_alt`,
@@ -63,12 +49,45 @@ class Products extends DataBase
                                               )
                                             ');
 
-    $test[] = $query3 -> execute ([$imageSrc, $imageAlt, $id_product]);
+    $test[] = $query2 -> execute ([$imageSrc, $imageAlt, $id_product]);
 
     var_dump($test);
     return $test;
   }
 
+  public function updateProduct($productId,$productName,$productDescription,$productAlt,$price,$imageSrc,$imageAlt)
+  {
+    $query = $this -> connexion -> prepare('
+                                            UPDATE 
+                                                products
+                                            SET
+                                            `product_name` = ?,
+                                            `product_description` = ?,
+                                            `product_alt` = ?,
+                                            `price` = ?
+                                            WHERE
+                                                id_product = ?
+                                            ');
+  
+    $test[]= $query -> execute([$productName, $productDescription, $productAlt, $price, $productId]);
+    var_dump($test);
+
+    $query = $this -> connexion -> prepare('
+                                            UPDATE 
+                                                images
+                                            SET
+                                            `image_src` = ?,
+                                            `image_alt` = ?
+                                            WHERE
+                                                id_product = ?
+                                          ');
+
+    $test[]= $query -> execute([$imageSrc,$imageAlt,$productId]);
+    var_dump($test);
+
+    return $test;
+  }
+  
   public function getProducts(): ?array 
   {
     $query = $this -> connexion -> prepare('
@@ -77,8 +96,8 @@ class Products extends DataBase
                                               `product_name`,
                                               `product_alt`,
                                               `price`,
-                                              `image_alt`,
-                                              `image_src`
+                                              `image_src`,
+                                              `image_alt`
                                             FROM
                                               products
                                             INNER JOIN images ON products.id_product = images.id_product
@@ -95,12 +114,18 @@ class Products extends DataBase
 
     $query = $this -> connexion -> prepare('
                                             SELECT
-                                              id_product,
-                                              price
+                                              products.id_product,
+                                              `product_name`,
+                                              product_description,
+                                              `product_alt`,
+                                              `price`,
+                                              `image_alt`,
+                                              `image_src`
                                             FROM 
                                               products
+                                            INNER JOIN images ON products.id_product = images.id_product
                                             WHERE
-                                              id_product = ?
+                                              products.id_product = ?
                                           ');
   
     $query -> execute([$id_product]);
