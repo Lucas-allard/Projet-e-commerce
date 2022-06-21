@@ -64,4 +64,4 @@ Features :
 
 Lucas Allard - allard.lucas.97@gmail.com
 
-Project Link: [https://github.com/Lucas-allard/blog](https://github.com/Lucas-allard/blog)
+Project Link: [https://github.com/Lucas-allard/Projet-e-commerce](https://github.com/Lucas-allard/Projet-e-commerce)
