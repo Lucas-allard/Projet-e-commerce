@@ -10,6 +10,7 @@ use controllers\ProductsController;
 use controllers\AboutController;
 use controllers\CartController;
 use controllers\OrderController;
+use controllers\ArticlesController;
 
 function chargerClasse($classe)
 {
@@ -26,6 +27,7 @@ $adminController = new AdminController();
 $userController = new UserController();
 $cartController = new CartController();
 $orderController = new OrderController();
+$articlesController = new ArticlesController();
 
 if (array_key_exists('action', $_GET)) {
     switch ($_GET['action']) {
@@ -103,6 +105,17 @@ if (array_key_exists('action', $_GET)) {
         case 'searchProduct':
             if (array_key_exists('product', $_GET)) {
                 $productsController->searchProduct($_GET['product']);
+            }
+            break;
+        case 'add_article':
+            $articlesController->addArticle();
+            break;
+        case 'edit_article':
+            $articlesController->editArticle();
+            break;
+        case 'searchArticle':
+            if (array_key_exists('article', $_GET)) {
+                $articlesController->searchArticle($_GET['article']);
             }
             break;
         default:

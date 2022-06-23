@@ -1,0 +1,35 @@
+<div class="admin-features-block">
+  <h2>Editer un article de votre blog</h2>
+  <form action="index.php?admin=edit_article" method="post" class="form-features" enctype="multipart/form-data">
+    <div class="field">
+      <label for="articles">Veuillez choisir un produit </label>
+      <select name="articles" id="article">
+        <option value="hello">0 </option>
+        <?php foreach ($articles as $article): ?>
+          <option value="<?= $article['id_article'] ?>"><?= $article['title'] ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <input type="hidden" id="id_article" name="id_article">
+    <div class="field">
+      <label for="article_title">Titre de l'article</label>
+      <input type="text" name="article_title" id="title" required>
+    </div>
+    <div class="field textarea">
+      <label for="article_content">Contenu de l'article </label>
+      <textarea name="article_content" id="content"></textarea>
+    </div>
+    <div class="field">
+      <label for="image_src">Insérer votre image</label>
+      <input type="file" accept="image/png, image/jpeg" name="image_src">
+      <input type="hidden" id="actual_image_src" name="actual_image_src">
+    </div>
+    <div class="field">
+      <label for="image_alt">Entrer la description de l'image </label>
+      <input type="text" name="image_alt" id="image_alt" required>
+    </div>
+    <div class="field">
+      <input type="submit" value="Ajouter">
+    </div>
+  </form>
+</div>

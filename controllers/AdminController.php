@@ -6,6 +6,7 @@ namespace controllers;
 
 use models\Admin;
 use models\Products;
+use models\Articles;
 use controllers\SecurityController;
 
 class AdminController extends SecurityController
@@ -16,6 +17,7 @@ class AdminController extends SecurityController
     {
         $this->admin = new Admin();
         $this->products = new Products();
+        $this->articles = new Articles();
     }
 
     // public function create_admin(){
@@ -37,6 +39,11 @@ class AdminController extends SecurityController
             $productsList = $this->products->getProducts();
 
             $templateAdmin = 'deleteProduct';
+        } elseif (isset($_GET['add_article'])) {
+            $templateAdmin = 'addArticle';
+        } elseif (isset($_GET['edit_article'])) {
+            $articles = $this->articles->getArticles();
+            $templateAdmin = 'editArticle';
         }
 
         if (

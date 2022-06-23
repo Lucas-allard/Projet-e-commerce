@@ -32,45 +32,45 @@ class ProductsController extends SecurityController
                 !empty($_FILES['image_src']['name']) &&
                 isset($_POST['image_alt']) &&
                 !empty($_POST['image_alt'])
-            );
-            var_dump('coucou');
-            $productName = $_POST['product_name'];
-            $productName = htmlspecialchars($productName);
-            $productDescription = $_POST['product_description'];
-            $productDescription = htmlspecialchars($productDescription);
-            $productAlt = $_POST['product_alt'];
-            $productAlt = htmlspecialchars($productAlt);
-            $price = $_POST['price'];
-            $price = htmlspecialchars($price);
-            $imageSrc = 'img/products/' . $_FILES['image_src']['name'];
-            $imageSrc = htmlspecialchars($imageSrc);
-            var_dump($imageSrc);
-            $imageAlt = $_POST['image_alt'];
-            $imageAlt = htmlspecialchars($imageAlt);
+            ) {
+                $productName = $_POST['product_name'];
+                $productName = htmlspecialchars($productName);
+                $productDescription = $_POST['product_description'];
+                $productDescription = htmlspecialchars($productDescription);
+                $productAlt = $_POST['product_alt'];
+                $productAlt = htmlspecialchars($productAlt);
+                $price = $_POST['price'];
+                $price = htmlspecialchars($price);
+                $imageSrc = 'img/products/' . $_FILES['image_src']['name'];
+                $imageSrc = htmlspecialchars($imageSrc);
+                var_dump($imageSrc);
+                $imageAlt = $_POST['image_alt'];
+                $imageAlt = htmlspecialchars($imageAlt);
 
-            $test = $this->products->insertProduct(
-                $productName,
-                $productDescription,
-                $productAlt,
-                $price,
-                $imageSrc,
-                $imageAlt
-            );
-            if ($test) {
-                $uploads_dir = 'views/img/products';
-                if (!empty($_FILES['image_src']['name'])) {
-                    //si le nom de l'image n'est pas vide
-                    $tmp_name = $_FILES['image_src']['tmp_name'];
-                    $imageSrc = $_FILES['image_src']['name'];
-                    move_uploaded_file($tmp_name, "$uploads_dir/$imageSrc");
-                }
-                // importer l'image dans le dossier
-                $message = ' insert OK ';
-                header(
-                    'location:index.php?admin=login&add_product&message=' .
-                        $message
+                $test = $this->products->insertProduct(
+                    $productName,
+                    $productDescription,
+                    $productAlt,
+                    $price,
+                    $imageSrc,
+                    $imageAlt
                 );
-                exit();
+                if ($test) {
+                    $uploads_dir = 'views/img/products';
+                    if (!empty($_FILES['image_src']['name'])) {
+                        //si le nom de l'image n'est pas vide
+                        $tmp_name = $_FILES['image_src']['tmp_name'];
+                        $imageSrc = $_FILES['image_src']['name'];
+                        move_uploaded_file($tmp_name, "$uploads_dir/$imageSrc");
+                    }
+                    // importer l'image dans le dossier
+                    $message = ' insert OK ';
+                    header(
+                        'location:index.php?admin=login&add_product&message=' .
+                            $message
+                    );
+                    exit();
+                }
             }
         }
         require 'views/admin/admin.phtml';
@@ -90,48 +90,52 @@ class ProductsController extends SecurityController
                 !empty($_POST['price']) &&
                 isset($_POST['image_alt']) &&
                 !empty($_POST['image_alt'])
-            );
-            $productId = $_POST['id_product'];
-            $productName = $_POST['product_name'];
-            $productName = htmlspecialchars($productName);
-            $productDescription = $_POST['product_description'];
-            $productDescription = htmlspecialchars($productDescription);
-            $productAlt = $_POST['product_alt'];
-            $productAlt = htmlspecialchars($productAlt);
-            $price = $_POST['price'];
-            $price = htmlspecialchars($price);
-            $imageAlt = $_POST['image_alt'];
-            $imageAlt = htmlspecialchars($imageAlt);
+            ) {
+                $productId = $_POST['id_product'];
+                $productName = $_POST['product_name'];
+                $productName = htmlspecialchars($productName);
+                $productDescription = $_POST['product_description'];
+                $productDescription = htmlspecialchars($productDescription);
+                $productAlt = $_POST['product_alt'];
+                $productAlt = htmlspecialchars($productAlt);
+                $price = $_POST['price'];
+                $price = htmlspecialchars($price);
+                $imageAlt = $_POST['image_alt'];
+                $imageAlt = htmlspecialchars($imageAlt);
 
-            $imageSrc = 'img/products/' . $_POST['actual_image_src'];
-            if (!empty($_FILES['image_src']['name'])) {
-                $uploads_dir = 'views/img/products';
-                unlink('views/' . $_POST['actual_image_src']);
-                $tmp_name = $_FILES['image_src']['tmp_name'];
-                $newImageSrc = $_FILES['image_src']['name'];
-                move_uploaded_file($tmp_name, "$uploads_dir/$newImageSrc");
-                $newImageSrc = 'img/products/' . $_FILES['image_src']['name'];
-            } else {
-                $newImageSrc = $imageSrc;
-            }
+                $imageSrc = 'img/products/' . $_POST['actual_image_src'];
+                if (!empty($_FILES['image_src']['name'])) {
+                    $uploads_dir = 'views/img/products';
+                    unlink('views/' . $_POST['actual_image_src']);
+                    $tmp_name = $_FILES['image_src']['tmp_name'];
+                    $newImageSrc = $_FILES['image_src']['name'];
+                    move_uploaded_file($tmp_name, "$uploads_dir/$newImageSrc");
+                    $newImageSrc =
+                        'img/products/' . $_FILES['image_src']['name'];
+                } else {
+                    $newImageSrc = $imageSrc;
+                }
 
-            $test = $this->products->updateProduct(
-                $productId,
-                $productName,
-                $productDescription,
-                $productAlt,
-                $price,
-                $newImageSrc,
-                $imageAlt
-            );
+                $newImageSrc = htmlspecialchars($newImageSrc);
 
-            if ($test) {
-                $message = ' update OK ';
-                header(
-                    'location:index.php?admin=login&edit_product&message=' .
-                        $message
+                $test = $this->products->updateProduct(
+                    $productId,
+                    $productName,
+                    $productDescription,
+                    $productAlt,
+                    $price,
+                    $newImageSrc,
+                    $imageAlt
                 );
-                exit();
+
+                if ($test) {
+                    $message = ' update OK ';
+                    header(
+                        'location:index.php?admin=login&edit_product&message=' .
+                            $message
+                    );
+                    exit();
+                }
             }
         }
     }

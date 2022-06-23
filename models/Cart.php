@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -6,86 +6,69 @@ namespace models;
 
 use config\DataBase;
 
-class Cart extends DataBase 
+class Cart extends DataBase
 {
-  private $connexion;
+    private $connexion;
 
-  public function __construct()
-  {
-    $this -> connexion = $this -> getConnexion();
-  }
-
-  public function getCartSession() 
-  {
-    if(isset($_SESSION['user']['panier']))
+    public function __construct()
     {
-      $ids = array_keys($_SESSION['user']['panier']);
+        $this -> connexion = $this -> getConnexion();
+    }
+
+    public function getCartSession()
+    {
+        if (isset($_SESSION['user']['panier'])) {
+            $ids = array_keys($_SESSION['user']['panier']);
       
-      return $ids;
-    }
-    else
-    {
-      return [];
-    }
-  }
- 
-  public function addToCart($id_product) 
-  {
-    if (!isset($_SESSION['user']['panier'])) 
-    {
-        $_SESSION['user']['panier'] = [];
-    }
-    if(isset($_SESSION['user']['panier']))
-    {
-      if(isset($_SESSION['user']['panier'][$id_product]))
-      {
-        $_SESSION['user']['panier'][$id_product]++;
-      } 
-      else 
-      {
-        $_SESSION['user']['panier'][$id_product] = 1;
-      }
-
-      $ids = array_keys($_SESSION['user']['panier']);
-      return $ids;
-    }
-    else
-    {
-      return [];
-    }
-  }
-
-  public function removeFromCart($id_product) 
-  {
-    if(isset($_SESSION['user']['panier'])) 
-    {
-      if(isset($_SESSION['user']['panier'][$id_product]))
-      {
-        if($_SESSION['user']['panier'][$id_product] <= 1)
-        {
-          unset($_SESSION['user']['panier'][$id_product]);
+            return $ids;
+        } else {
+            return [];
         }
-        else {
-          $_SESSION['user']['panier'][$id_product]--;
-        }        
-      } 
     }
-  }
-  
-  public function deleteFromCart($id_product)
-  
-  {
-    if (isset($_SESSION['user']['panier'])) 
+ 
+    public function addToCart($id_product)
     {
-        unset($_SESSION['user']['panier'][$id_product]);
-    }
-  }
+        if (!isset($_SESSION['user']['panier'])) {
+            $_SESSION['user']['panier'] = [];
+        }
+        if (isset($_SESSION['user']['panier'])) {
+            if (isset($_SESSION['user']['panier'][$id_product])) {
+                $_SESSION['user']['panier'][$id_product]++;
+            } else {
+                $_SESSION['user']['panier'][$id_product] = 1;
+            }
 
-  public function displayCart($ids) 
-  {
-    if (!empty($ids)) 
+            $ids = array_keys($_SESSION['user']['panier']);
+            return $ids;
+        } else {
+            return [];
+        }
+    }
+
+    public function removeFromCart($id_product)
     {
-      $query = $this -> connexion -> prepare('
+        if (isset($_SESSION['user']['panier'])) {
+            if (isset($_SESSION['user']['panier'][$id_product])) {
+                if ($_SESSION['user']['panier'][$id_product] <= 1) {
+                    unset($_SESSION['user']['panier'][$id_product]);
+                } else {
+                    $_SESSION['user']['panier'][$id_product]--;
+                }
+            }
+        }
+    }
+  
+    public function deleteFromCart($id_product)
+    {
+        if (isset($_SESSION['user']['panier'])) {
+            unset($_SESSION['user']['panier'][$id_product]);
+        }
+    }
+
+    public function displayCart($ids)
+    {
+        if (!empty($ids)) {
+            $query = $this -> connexion -> prepare('
                                             SELECT
                                               products.`id_product`,
                                               `product_name`,
@@ -97,51 +80,47 @@ class Cart extends DataBase
                                             FROM
                                               products
                                             INNER JOIN images ON products.id_product = images.id_product
-                                            WHERE products.id_product IN ('.implode(",",$ids).')
+                                            WHERE products.id_product IN ('.implode(",", $ids).')
                                             ');
-      $query -> execute();
+            $query -> execute();
   
-      $productsList = $query -> fetchAll();
+            $productsList = $query -> fetchAll();
   
-      return $productsList;
-    }
-    else {
-      return null;
-    }
-  }
-  
-  public function getTotalPricePerProduct($product,$id_product) 
-  {
-    if (isset($_SESSION['user']['panier'])) 
-    {
-        $totalPricePerProduct = [];
-        foreach ($_SESSION['user']['panier'] as $panier) {
-            $quantity = $panier;
-            $totalPricePerProduct[] = $quantity * $product['price'];
+            return $productsList;
+        } else {
+            return null;
         }
-        return $totalPricePerProduct;
     }
-  }
   
-  public function getProductsPrice($product,$id_product) 
-  {
-    if (isset($_SESSION['user']['panier'])) 
+    public function getTotalPricePerProduct($product, $id_product)
     {
-        $totalProductsPrice = 0;
-        foreach ($_SESSION['user']['panier'] as $panier) {
-            $quantity = $panier;
-            $totalProductsPrice += $quantity * $product['price'];
+        if (isset($_SESSION['user']['panier'])) {
+            $totalPricePerProduct = [];
+            foreach ($_SESSION['user']['panier'] as $panier) {
+                $quantity = $panier;
+                $totalPricePerProduct[] = $quantity * $product['price'];
+            }
+            return $totalPricePerProduct;
         }
-        return $totalProductsPrice;
     }
-  }
   
-  public function getTotalPrice($totalProductsPrice,$deliveryPrice) 
-  {
-    if (isset($_SESSION['user']['panier'])) 
+    public function getProductsPrice($product, $id_product)
     {
-        $totalPrice = $totalProductsPrice + $deliveryPrice['delivery_price'];
-        return $totalPrice;
+        if (isset($_SESSION['user']['panier'])) {
+            $totalProductsPrice = 0;
+            foreach ($_SESSION['user']['panier'] as $panier) {
+                $quantity = $panier;
+                $totalProductsPrice += $quantity * $product['price'];
+            }
+            return $totalProductsPrice;
+        }
     }
-  }
+  
+    public function getTotalPrice($totalProductsPrice, $deliveryPrice)
+    {
+        if (isset($_SESSION['user']['panier'])) {
+            $totalPrice = $totalProductsPrice + $deliveryPrice['delivery_price'];
+            return $totalPrice;
+        }
+    }
 }

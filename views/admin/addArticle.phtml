@@ -2,23 +2,15 @@
   <h2>Ajouter un article sur votre blog</h2>
   <form action="index.php?admin=add_article" method="post" class="form-features" enctype="multipart/form-data">
     <div class="field">
-      <label for="product_name">Entrer le nom du produit </label>
-      <input type="text" name="product_name" required>
+      <label for="article_title">Titre de l'article</label>
+      <input type="text" name="article_title" required>
     </div>
     <div class="field textarea">
-      <label for="product_description">Entrez la description du produit </label>
-      <textarea name="product_description" required></textarea>
+      <label for="article_content">Contenu de l'article </label>
+      <textarea name="article_content" ></textarea>
     </div>
     <div class="field">
-      <label for="product_alt">Entrer la composition du produit </label>
-      <input type="text" name="product_alt" required>
-    </div>
-    <div class="field">
-      <label for="product_price">Entrer le prix du produit </label>
-      <input type="text" name="price" required>
-    </div>
-    <div class="field">
-      <label for="image_src">Insérer votre image </label>
+      <label for="image_src">Insérer votre image</label>
       <input type="file" accept="image/png, image/jpeg" name="image_src" required>
     </div>
     <div class="field">

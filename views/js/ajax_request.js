@@ -11,13 +11,20 @@ function onAjaxRequest() {
 
 function onAjaxRequest2() {
   let idProduct = $("#product").val();
-  console.log(idProduct);
-  console.log(
-    $.getJSON(
-      "index.php?admin=searchProduct",
-      "product=" + idProduct,
-      displayProduct
-    )
+  $.getJSON(
+    "index.php?admin=searchProduct",
+    "product=" + idProduct,
+    displayProduct
+  );
+}
+
+function onAjaxRequest3() {
+  let idArticle = $("#article").val();
+  console.log(idArticle);
+  $.getJSON(
+    "index.php?admin=searchArticle",
+    "article=" + idArticle,
+    displayArticle
   );
 }
 
@@ -50,18 +57,26 @@ function displayProducts(products) {
 }
 
 function displayProduct(product) {
-  console.log(product);
   $("#id_product").val(product[0]);
   $("#product_name").val(product[1]);
   $("#product_description").val(product[2]);
   $("#product_alt").val(product[3]);
   $("#price").val(product[4]);
   $("#actual_image_src").val(product[6]);
-  console.log($("#actual_image_src"));
   $("#image_alt").val(product[5]);
+}
+
+function displayArticle(article) {
+  console.log(article);
+  $("#id_article").val(article[0]);
+  $("#title").val(article[1]);
+  $("#content").val(article[2]);
+  $("#actual_image_src").val(article[3]);
+  $("#image_alt").val(article[4]);
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
   $("#search").on("input", onAjaxRequest);
   $("#product").on("change", onAjaxRequest2);
+  $("#article").on("change", onAjaxRequest3);
 });

@@ -87,6 +87,10 @@
   font-size: 2rem;
 }
 
+.tox-tinymce {
+  width: 100% !important;
+}
+
 .form-features .field + .field {
   border-top: 1px solid white;
 }
