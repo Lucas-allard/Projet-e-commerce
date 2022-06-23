@@ -54,7 +54,7 @@ Features :
  4. Do order (done)
 
  Admin : 
- 1. Add, remove & edit product (in progress)
+ 1. Add, remove & edit product (done)
  2. Add, remove & edit article (not done)
  3. Add, remove & edit category (not done)
  4. Add, remove & edit comment (not done)

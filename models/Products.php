@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -6,20 +6,26 @@ namespace models;
 
 use config\DataBase;
 
-class Products extends DataBase 
+class Products extends DataBase
 {
-  private $connexion;
+    private $connexion;
 
-  public function __construct()
-  {
-    $this -> connexion = $this -> getConnexion();
-  }
+    public function __construct()
+    {
+        $this->connexion = $this->getConnexion();
+    }
 
-  public function insertProduct($productName, $productDescription, $productAlt, $price, $imageSrc, $imageAlt) 
-  {
-    $test = [];
+    public function insertProduct(
+        $productName,
+        $productDescription,
+        $productAlt,
+        $price,
+        $imageSrc,
+        $imageAlt
+    ) {
+        $test = [];
 
-    $query = $this -> connexion -> prepare('
+        $query = $this->connexion->prepare('
                                             INSERT INTO `products`(
                                               `product_name`,
                                               `product_description`,
@@ -31,12 +37,17 @@ class Products extends DataBase
                                               ?,
                                               ?)
                                             ');
-    
-    $test[]= $query -> execute([$productName, $productDescription, $productAlt, $price]);
-    
-    $id_product = $this -> connexion -> lastInsertId();
 
-    $query2 = $this -> connexion -> prepare('
+        $test[] = $query->execute([
+            $productName,
+            $productDescription,
+            $productAlt,
+            $price,
+        ]);
+
+        $id_product = $this->connexion->lastInsertId();
+
+        $query2 = $this->connexion->prepare('
                                             INSERT INTO `images`(
                                               `image_src`,
                                               `image_alt`,
@@ -49,15 +60,21 @@ class Products extends DataBase
                                               )
                                             ');
 
-    $test[] = $query2 -> execute ([$imageSrc, $imageAlt, $id_product]);
+        $test[] = $query2->execute([$imageSrc, $imageAlt, $id_product]);
 
-    var_dump($test);
-    return $test;
-  }
+        return $test;
+    }
 
-  public function updateProduct($productId,$productName,$productDescription,$productAlt,$price,$imageSrc,$imageAlt)
-  {
-    $query = $this -> connexion -> prepare('
+    public function updateProduct(
+        $productId,
+        $productName,
+        $productDescription,
+        $productAlt,
+        $price,
+        $imageSrc,
+        $imageAlt
+    ) {
+        $query = $this->connexion->prepare('
                                             UPDATE 
                                                 products
                                             SET
@@ -68,11 +85,16 @@ class Products extends DataBase
                                             WHERE
                                                 id_product = ?
                                             ');
-  
-    $test[]= $query -> execute([$productName, $productDescription, $productAlt, $price, $productId]);
-    var_dump($test);
 
-    $query = $this -> connexion -> prepare('
+        $test[] = $query->execute([
+            $productName,
+            $productDescription,
+            $productAlt,
+            $price,
+            $productId,
+        ]);
+
+        $query = $this->connexion->prepare('
                                             UPDATE 
                                                 images
                                             SET
@@ -82,15 +104,27 @@ class Products extends DataBase
                                                 id_product = ?
                                           ');
 
-    $test[]= $query -> execute([$imageSrc,$imageAlt,$productId]);
-    var_dump($test);
+        $test[] = $query->execute([$imageSrc, $imageAlt, $productId]);
 
-    return $test;
-  }
-  
-  public function getProducts(): ?array 
-  {
-    $query = $this -> connexion -> prepare('
+        return $test;
+    }
+
+    public function delProduct($id_product)
+    {
+        $query = $this->connexion->prepare('
+                                            DELETE FROM 
+                                              products
+                                            WHERE 
+                                              id_product = ?
+                                            ');
+        $test = $query->execute([$id_product]);
+
+        return $test;
+    }
+
+    public function getProducts(): ?array
+    {
+        $query = $this->connexion->prepare('
                                             SELECT
                                               products.`id_product`,
                                               `product_name`,
@@ -102,17 +136,16 @@ class Products extends DataBase
                                               products
                                             INNER JOIN images ON products.id_product = images.id_product
                                             ');
-    $query -> execute();
+        $query->execute();
 
-    $productsList = $query -> fetchAll();
-   
-    return $productsList;
-  }
-  
-   public function getProductById($id_product) 
-  {
+        $productsList = $query->fetchAll();
 
-    $query = $this -> connexion -> prepare('
+        return $productsList;
+    }
+
+    public function getProductById($id_product)
+    {
+        $query = $this->connexion->prepare('
                                             SELECT
                                               products.id_product,
                                               `product_name`,
@@ -127,16 +160,16 @@ class Products extends DataBase
                                             WHERE
                                               products.id_product = ?
                                           ');
-  
-    $query -> execute([$id_product]);
-    $product = $query -> fetch();
-  
-    return $product;
-  }
-  
-   public function getProductsSortByLowPrice()
-  {
-    $query = $this -> connexion -> prepare('
+
+        $query->execute([$id_product]);
+        $product = $query->fetch();
+
+        return $product;
+    }
+
+    public function getProductsSortByLowPrice()
+    {
+        $query = $this->connexion->prepare('
                                             SELECT
                                               products.`id_product`,
                                               `product_name`,
@@ -149,16 +182,16 @@ class Products extends DataBase
                                             INNER JOIN images ON products.id_product = images.id_product
                                             ORDER BY price ASC
                                             ');
-    $query -> execute();
-    
-    $productsList = $query -> fetchAll();
-    
-    return $productsList;
-  } 
-  
-  public function getProductsSortByHighPrice()
-  {
-    $query = $this -> connexion -> prepare('
+        $query->execute();
+
+        $productsList = $query->fetchAll();
+
+        return $productsList;
+    }
+
+    public function getProductsSortByHighPrice()
+    {
+        $query = $this->connexion->prepare('
                                             SELECT
                                               products.`id_product`,
                                               `product_name`,
@@ -171,16 +204,16 @@ class Products extends DataBase
                                             INNER JOIN images ON products.id_product = images.id_product
                                             ORDER BY price DESC
                                             ');
-    $query -> execute();
-    
-    $productsList = $query -> fetchAll();
-    
-    return $productsList;
-  }
-  
-   public function searchProduct($search)
-  {
-    $query = $this -> connexion -> prepare('
+        $query->execute();
+
+        $productsList = $query->fetchAll();
+
+        return $productsList;
+    }
+
+    public function searchProduct($search)
+    {
+        $query = $this->connexion->prepare('
                           SELECT
                             products.`id_product`,
                             `product_name`,
@@ -194,20 +227,23 @@ class Products extends DataBase
                           INNER JOIN images ON products.id_product = images.id_product
                           WHERE `product_name` LIKE ?
                           ');
-    $query -> execute(["%".$search."%"]);
-    
-    $searchResult = $query -> fetchAll();
-    
-    return $searchResult;
-  }
+        $query->execute(['%' . $search . '%']);
 
-  public function getProductDetails(): ?array
-  {
-    if (array_key_exists("id_product", $_GET) && is_numeric($_GET["id_product"])) {
-      $id = $_GET["id_product"];
+        $searchResult = $query->fetchAll();
+
+        return $searchResult;
     }
 
-    $query = $this -> connexion -> prepare('
+    public function getProductDetails(): ?array
+    {
+        if (
+            array_key_exists('id_product', $_GET) &&
+            is_numeric($_GET['id_product'])
+        ) {
+            $id = $_GET['id_product'];
+        }
+
+        $query = $this->connexion->prepare('
                                             SELECT
                                               products.`id_product`,
                                               `product_name`,
@@ -222,33 +258,33 @@ class Products extends DataBase
                                             WHERE
                                               products.id_product = ?  
                                             ');
-    $query -> execute(["$id"]);
+        $query->execute(["$id"]);
 
-    $productDetails = $query -> fetch();
+        $productDetails = $query->fetch();
 
-    return $productDetails;
-  }
+        return $productDetails;
+    }
 
-  public function getDeliveryDate():string
-  {
-    $date = new \DateTime();
-    $date->add(new \DateInterval('P7D')); 
-    $deliveryDate = $date->format('d-m-Y'); 
-    return $deliveryDate;
-  } 
-  
-  public function getDeliveryPrice($id_product)
-  {
-    $query = $this -> connexion -> prepare('
+    public function getDeliveryDate(): string
+    {
+        $date = new \DateTime();
+        $date->add(new \DateInterval('P7D'));
+        $deliveryDate = $date->format('d-m-Y');
+        return $deliveryDate;
+    }
+
+    public function getDeliveryPrice($id_product)
+    {
+        $query = $this->connexion->prepare('
                                             SELECT
                                               delivery_price
                                             FROM
                                               products
                                             ');
-    $query -> execute();
+        $query->execute();
 
-    $deliveryPrice = $query -> fetch();
-   
-    return $deliveryPrice;
-  }
+        $deliveryPrice = $query->fetch();
+
+        return $deliveryPrice;
+    }
 }

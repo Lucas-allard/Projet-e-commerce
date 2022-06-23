@@ -1,0 +1,32 @@
+<div class="admin-features-block">
+  <h2>Ajouter un article sur votre blog</h2>
+  <form action="index.php?admin=add_article" method="post" class="form-features" enctype="multipart/form-data">
+    <div class="field">
+      <label for="product_name">Entrer le nom du produit </label>
+      <input type="text" name="product_name" required>
+    </div>
+    <div class="field textarea">
+      <label for="product_description">Entrez la description du produit </label>
+      <textarea name="product_description" required></textarea>
+    </div>
+    <div class="field">
+      <label for="product_alt">Entrer la composition du produit </label>
+      <input type="text" name="product_alt" required>
+    </div>
+    <div class="field">
+      <label for="product_price">Entrer le prix du produit </label>
+      <input type="text" name="price" required>
+    </div>
+    <div class="field">
+      <label for="image_src">Insérer votre image </label>
+      <input type="file" accept="image/png, image/jpeg" name="image_src" required>
+    </div>
+    <div class="field">
+      <label for="image_alt">Entrer la description de l'image </label>
+      <input type="text" name="image_alt" required>
+    </div>
+    <div class="field">
+      <input type="submit" value="Ajouter">
+    </div>
+  </form>
+</div>

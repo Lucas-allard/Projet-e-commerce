@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -13,8 +13,8 @@ use controllers\OrderController;
 
 function chargerClasse($classe)
 {
-    $classe=str_replace('\\','/',$classe);      
-    require $classe.'.php'; 
+    $classe = str_replace('\\', '/', $classe);
+    require $classe . '.php';
 }
 
 spl_autoload_register('chargerClasse'); //fin Autoload
@@ -27,105 +27,88 @@ $userController = new UserController();
 $cartController = new CartController();
 $orderController = new OrderController();
 
-
-if (array_key_exists("action",$_GET))
-{
-  switch($_GET["action"])
-  {
-    case "products":
-      if(array_key_exists('search',$_GET)) 
-      {
-        $productsController -> searchAjax($_GET['search']);
-      } 
-      else 
-      {
-        $productsController -> products();
-      }
-      break;
-    case "productsSortByLowPrice":
-      $productsController -> productsSortByLowPrice();
-      break;
-    case "productsSortByHighPrice":
-      $productsController -> productsSortByHighPrice();
-      break;
-    case "detailsProduct":
-      $productsController -> detailsProduct();
-      break;
-    case "about":
-      $aboutController -> about();
-      break;
-    case "login":
-      $userController -> loginUser();
-      break;
-    case "deconnexion": 
-      $adminController -> deconnexionAdmin();
-      $userController -> deconnexionUser();
-      break;
-    case "create_account":
-      $userController -> create_account();
-      break;
-    case "add_cart": 
-      if (array_key_exists("id_product", $_GET))
-      {
-        $cartController -> addCart($_GET['id_product']);
-      }
-      break;
-    case "remove_cart": 
-      if (array_key_exists("id_product", $_GET))
-      {
-        $cartController -> removeCart($_GET['id_product']);
-        
-      }
-      break;
-    case "del_cart": 
-      if (array_key_exists("id_product", $_GET))
-      {
-        $cartController -> deleteCart($_GET['id_product']);
-      }
-      break;
-    case "get_cart": 
-      if (array_key_exists("id_user", $_GET))
-      {
-        $cartController -> getCart($_GET['id_user']);
-        
-      }
-      break;
-    case "valid_order":
-      if (array_key_exists("id_user", $_GET))
-      {
-        $orderController -> validOrder($_GET['id_user']);
-        
-      }
-      break;
-  }
+if (array_key_exists('action', $_GET)) {
+    switch ($_GET['action']) {
+        case 'products':
+            if (array_key_exists('search', $_GET)) {
+                $productsController->searchAjax($_GET['search']);
+            } else {
+                $productsController->products();
+            }
+            break;
+        case 'productsSortByLowPrice':
+            $productsController->productsSortByLowPrice();
+            break;
+        case 'productsSortByHighPrice':
+            $productsController->productsSortByHighPrice();
+            break;
+        case 'detailsProduct':
+            $productsController->detailsProduct();
+            break;
+        case 'about':
+            $aboutController->about();
+            break;
+        case 'login':
+            $userController->loginUser();
+            break;
+        case 'deconnexion':
+            $adminController->deconnexionAdmin();
+            $userController->deconnexionUser();
+            break;
+        case 'create_account':
+            $userController->create_account();
+            break;
+        case 'add_cart':
+            if (array_key_exists('id_product', $_GET)) {
+                $cartController->addCart($_GET['id_product']);
+            }
+            break;
+        case 'remove_cart':
+            if (array_key_exists('id_product', $_GET)) {
+                $cartController->removeCart($_GET['id_product']);
+            }
+            break;
+        case 'del_cart':
+            if (array_key_exists('id_product', $_GET)) {
+                $cartController->deleteCart($_GET['id_product']);
+            }
+            break;
+        case 'get_cart':
+            if (array_key_exists('id_user', $_GET)) {
+                $cartController->getCart($_GET['id_user']);
+            }
+            break;
+        case 'valid_order':
+            if (array_key_exists('id_user', $_GET)) {
+                $orderController->validOrder($_GET['id_user']);
+            }
+            break;
+    }
+} elseif (array_key_exists('admin', $_GET)) {
+    switch ($_GET['admin']) {
+        case 'login':
+            $adminController->loginAdmin();
+            break;
+        case 'add_product':
+            $productsController->addProduct();
+            break;
+        case 'edit_product':
+            $productsController->editProduct();
+            break;
+        case 'delete_product':
+            if (array_key_exists('id_product', $_GET)) {
+                $productsController->deleteProduct();
+            }
+            break;
+        case 'searchProduct':
+            if (array_key_exists('product', $_GET)) {
+                $productsController->searchProduct($_GET['product']);
+            }
+            break;
+        default:
+            header('location:index.php');
+            break;
+    }
+} else {
+    $sliderController->listProduct();
 }
-elseif (array_key_exists("admin",$_GET))
-{
-  switch($_GET["admin"])
-  { 
-    case "login": 
-      $adminController -> loginAdmin();
-      break;
-    case "add_product": 
-      $productsController -> addProduct();
-      break;
-    case "edit_product": 
-      $productsController -> editProduct();
-      break;
-    case "searchProduct":
-      if(array_key_exists('product',$_GET)) 
-      {
-        $productsController -> searchProduct($_GET['product']);
-      } 
-      break;
-    default: 
-      header("location:index.php");
-      break;
-  }
-}
-else 
-{
-    $sliderController -> listProduct();    
-}
-
-

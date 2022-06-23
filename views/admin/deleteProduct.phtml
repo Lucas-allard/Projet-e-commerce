@@ -1,0 +1,22 @@
+<div class="products-block" id="products">
+      <?php foreach ($productsList as $product): ?>
+        <div class="product-box">
+          <a href="index.php?action=detailsProduct&id_product=<?= $product['id_product'] ?>">
+            <img src="views/<?= $product['image_src'] ?>" alt="<?= $product['image_alt'] ?>" />
+            <div class="product-content">
+              <div class="product-description">
+                <h3>Camiseta</h3>
+                <p><?= $product['product_name'] ?></p>
+                <p><em><?= $product['product_alt'] ?></em></p>
+              </div>
+              <div class="product-price">
+                <p><?= $product['price'] ?> €</p>
+              </div>
+              <div class="delete-block">
+                <a href="index.php?admin=delete_product&id_product=<?= $product['id_product'] ?>"><button>Supprimer le produit</button></a>
+              </div>
+            </div>
+          </a>
+        </div>
+      <?php endforeach; ?>
+    </div>
