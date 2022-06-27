@@ -1,80 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Camiseta - accueil</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-    />
-    <link rel="stylesheet" href="views/css/slick.css" />
-    <link rel="stylesheet" href="views/css/slick-theme.css" />
-    <link rel="stylesheet" href="views/css/variables.css" />
-    <link rel="stylesheet" href="views/css/layout.css" />
-    <link rel="stylesheet" href="views/css/admin.css" />
-    <link rel="stylesheet" href="views/css/home.css" />
-    <link rel="stylesheet" href="views/css/catalogue.css" />
-    <link rel="stylesheet" href="views/css/product.css">    
-    <link rel="stylesheet" href="views/css/about.css" />
-    <link rel="stylesheet" href="views/css/cart.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo">
-        <a href="index.php"><img src="views/img/logo2.png" alt="logo" /></a>  
-      </div>
-      <nav class="header-navbar">
-        <ul id="navbar">
-          <li id="close" class="close"><i class="fas fa-times"></i></li>
-          <li><a href="index.php">Accueil</a></li>
-          <li><a href="index.php?action=products">Catalogue</a></li>
-          <li><a href="index.php?action=blog">Blog</a></li>
-          <li><a href="index.php?action=contact">Contact</a></li>
-          <?php if ($this->isConnectAdmin() || $this->isConnectUser()): ?>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camiseta - accueil</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <link rel="stylesheet" href="views/css/slick.css" />
+  <link rel="stylesheet" href="views/css/slick-theme.css" />
+  <link rel="stylesheet" href="views/css/variables.css" />
+  <link rel="stylesheet" href="views/css/layout.css" />
+  <link rel="stylesheet" href="views/css/admin.css" />
+  <link rel="stylesheet" href="views/css/home.css" />
+  <link rel="stylesheet" href="views/css/catalogue.css" />
+  <link rel="stylesheet" href="views/css/product.css">
+  <link rel="stylesheet" href="views/css/about.css" />
+  <link rel="stylesheet" href="views/css/articles.css">
+  <link rel="stylesheet" href="views/css/cart.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="index.php"><img src="views/img/logo2.png" alt="logo" /></a>
+    </div>
+    <nav class="header-navbar">
+      <ul id="navbar">
+        <li id="close" class="close"><i class="fas fa-times"></i></li>
+        <li><a href="index.php">Accueil</a></li>
+        <li><a href="index.php?action=products">Catalogue</a></li>
+        <li><a href="index.php?action=articles">Blog</a></li>
+        <li><a href="index.php?action=contact">Contact</a></li>
+        <?php if ($this->isConnectAdmin() || $this->isConnectUser()) : ?>
           <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
-          <?php else: ?>
+        <?php else : ?>
           <li><a href="#" id="user-button">Connexion</a></li>
-          <?php endif; ?>
-          <?php if ($this->isConnectAdmin()): ?>
-            <li><a href="index.php?admin=login">Espace administrateur</a></li>
-          <?php endif; ?>
-          <?php if ($this->isConnectUser()): ?>
+        <?php endif; ?>
+        <?php if ($this->isConnectAdmin()) : ?>
+          <li><a href="index.php?admin=login">Espace administrateur</a></li>
+        <?php endif; ?>
+        <?php if ($this->isConnectUser()) : ?>
           <li>
-            <a href="index.php?action=get_cart&id_user=<?= $_SESSION['user'][
-                'id_user'
-            ] ?>" id="cart-button" class="lg-bag"
-              ><i class="fas fa-shopping-bag"></i
-            ></a>
+            <a href="index.php?action=get_cart&id_user=<?= $_SESSION['user']['id_user'] ?>" id="cart-button" class="lg-bag"><i class="fas fa-shopping-bag"></i></a>
           </li>
-          <?php endif; ?>
-        </ul>
-      </nav>
-      
-      <div class="mobile">
-      <?php if ($this->isConnectUser()): ?>
-      <a href="index.php?action=get_cart&id_user=<?= $_SESSION['user'][
-          'id_user'
-      ] ?>" id="cart-button" class="lg-bag"
-              ><i class="fas fa-shopping-bag"></i
-            ><?= count($_SESSION['user']['panier']) ?></a>
+        <?php endif; ?>
+      </ul>
+    </nav>
+
+    <div class="mobile">
+      <?php if ($this->isConnectUser()) : ?>
+        <a href="index.php?action=get_cart&id_user=<?= $_SESSION['user']['id_user'] ?>" id="cart-button" class="lg-bag"><i class="fas fa-shopping-bag"></i><?= count($_SESSION['user']['panier']) ?></a>
       <?php endif; ?>
       <i class="fas fa-outdent" id="bar"></i>
-      </div>
-      
-    </header>
-    <main>
-      <?php if (isset($message)): ?>
-        <p> <?= $message ?> </p>
-      <?php endif; ?>
+    </div>
 
-      <?php if (array_key_exists('message', $_GET)): ?>
-        <p> <?= $_GET['message'] ?> </p>
-      <?php endif; ?>
-      <!-- Affichage du template lié à la vue -->
-      <?php include $template . '.phtml'; ?>
-      <?php if (isset($_SESSION['user'])): ?>
+  </header>
+  <main>
+    <?php if (isset($message)) : ?>
+      <p> <?= $message ?> </p>
+    <?php endif; ?>
+
+    <?php if (array_key_exists('message', $_GET)) : ?>
+      <p> <?= $_GET['message'] ?> </p>
+    <?php endif; ?>
+    <!-- Affichage du template lié à la vue -->
+    <?php include $template . '.phtml'; ?>
+    <?php if (isset($_SESSION['user'])) : ?>
       <div class="newsletter-block">
         <div class="newsletter-content">
           <p>Inscrivez-vous à notre newsletter</p>
@@ -88,149 +80,127 @@
             </div>
             <div class="notice">
               <input type="checkbox" required />
-              <span class="notice-copy"
-                >J'accepte que mon adresse électronique soit conservée et utilisée
-                pour recevoir la newsletter mensuelle.</span
-              >
+              <span class="notice-copy">J'accepte que mon adresse électronique soit conservée et utilisée
+                pour recevoir la newsletter mensuelle.</span>
             </div>
           </form>
         </div>
       </div>
-      <?php endif; ?>
-    </main>
-    <footer class="footer">
-      <div class="container">
-        <div class="contact-footer">
-          <div class="logo">
-            <a href="index.php"><img src="views/img/logo2.png" alt="logo" /></a>    
-          </div>
-          <p>Contact</p>
-          <address>
-            <ul>
-              <li>
-                <strong>Adresse :</strong> 5 boulevard de la liberté - 35000
-                Rennes
-              </li>
-              <li><strong>Téléphone :</strong> 06 57 82 12 32</li>
-              <li>Ouvert du lundi au samedi de 10h à 19h30</li>
-            </ul>
-          </address>
-          <div class="social-network">
-            <p>Réseaux sociaux</p>
-            <ul>
-              <li>
-                <a href="https://www.facebook.com/"
-                  ><i class="fab fa-facebook"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.tiktok.com/fr/"
-                  ><i class="fab fa-tiktok"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/fr/"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
+    <?php endif; ?>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="contact-footer">
+        <div class="logo">
+          <a href="index.php"><img src="views/img/logo2.png" alt="logo" /></a>
         </div>
-        <div class="about-footer">
-          <p>A propos</p>
+        <p>Contact</p>
+        <address>
           <ul>
-            <li><a href="index.php?action=about">A propos de nous</a></li>
-            <li><a href="">Information sur la livraison</a></li>
-            <li><a href="privacy_policy.php">Politique de confidentialité</a></li>
-            <li><a href="">Conditions générales</a></li>
-            <li><a href="index.php?action=contact">Nous contacter</a></li>
+            <li>
+              <strong>Adresse :</strong> 5 boulevard de la liberté - 35000
+              Rennes
+            </li>
+            <li><strong>Téléphone :</strong> 06 57 82 12 32</li>
+            <li>Ouvert du lundi au samedi de 10h à 19h30</li>
           </ul>
-        </div>
-        <div class="account-footer">
-          <p>Mon compte</p>
+        </address>
+        <div class="social-network">
+          <p>Réseaux sociaux</p>
           <ul>
-            <?php if ($this->isConnectUser()): ?>
-            <li><a href="index.php?action=deconnexion" id="user-button2">Se déconnecter</a></li>
-            <?php else: ?> 
-            <li><a href="index.php?action=login" id="user-button2">Se connecter</a></li>
-            <?php endif; ?>
-            <?php if ($this->isConnectUser()): ?>
-            <li><a href="index.php?action=get_cart&id_user=<?= $_SESSION[
-                'user'
-            ]['id_user'] ?>">Mon panier</a></li>
-            <li><a href="">Ma liste de souhait</a></li>
-            <li><a href="">Suivre ma commande</a></li>
-            <?php endif; ?>
-            <li><a href="">Aide</a></li>
+            <li>
+              <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/fr/"><i class="fab fa-tiktok"></i></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/fr/"><i class="fab fa-youtube"></i></a>
+            </li>
           </ul>
-        </div>
-        <div class="app-footer">
-          <p>Installer l'application</p>
-          <div class="logo-store">
-            <a href="https://www.apple.com/fr/store"
-              ><img src="views/img/pay/app.jpg" alt="applestore"
-            /></a>
-            <a href="https://play.google.com/store"
-              ><img src="views/img/pay/play.jpg" alt="playstore"
-            /></a>
-          </div>
-          <p>Paiements sécurisés</p>
-          <div class="logo-payment">
-            <img src="views/img/pay/pay.png" alt="logo credit card" />
-          </div>
         </div>
       </div>
-    </footer>
-    <div id="modal-backdrop" class="modal-backdrop"></div>
-    <div id="login-modal" class="login-modal">         
-      <form action="index.php?action=login" method="POST">
-          <div id="user-modal"><a href="#" class="close" ><i class="fas fa-times"></i></a></div>
-          <h1>Connexion</h1>
-          <?php if (isset($message)): ?>
-            <p> <?= $message ?> </p>
+      <div class="about-footer">
+        <p>A propos</p>
+        <ul>
+          <li><a href="index.php?action=about">A propos de nous</a></li>
+          <li><a href="">Information sur la livraison</a></li>
+          <li><a href="privacy_policy.php">Politique de confidentialité</a></li>
+          <li><a href="">Conditions générales</a></li>
+          <li><a href="index.php?action=contact">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div class="account-footer">
+        <p>Mon compte</p>
+        <ul>
+          <?php if ($this->isConnectUser()) : ?>
+            <li><a href="index.php?action=deconnexion" id="user-button2">Se déconnecter</a></li>
+          <?php else : ?>
+            <li><a href="index.php?action=login" id="user-button2">Se connecter</a></li>
           <?php endif; ?>
-          <label><b>Nom d'utilisateur</b></label>
-          <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
-          <label><b>Mot de passe</b></label>
-          <input type="password" placeholder="Entrer le mot de passe" name="password" required>
-          <input type="submit" id='submit' value='LOGIN' >
-          <a href="index.php?action=create_account">Créer un compte</a>
-      </form>
+          <?php if ($this->isConnectUser()) : ?>
+            <li><a href="index.php?action=get_cart&id_user=<?= $_SESSION['user']['id_user'] ?>">Mon panier</a></li>
+            <li><a href="">Ma liste de souhait</a></li>
+            <li><a href="">Suivre ma commande</a></li>
+          <?php endif; ?>
+          <li><a href="">Aide</a></li>
+        </ul>
+      </div>
+      <div class="app-footer">
+        <p>Installer l'application</p>
+        <div class="logo-store">
+          <a href="https://www.apple.com/fr/store"><img src="views/img/pay/app.jpg" alt="applestore" /></a>
+          <a href="https://play.google.com/store"><img src="views/img/pay/play.jpg" alt="playstore" /></a>
+        </div>
+        <p>Paiements sécurisés</p>
+        <div class="logo-payment">
+          <img src="views/img/pay/pay.png" alt="logo credit card" />
+        </div>
+      </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"
-    ></script>
-    <script src="views/js/responsive_navbar.js"></script>
-    <script src="views/js/slick.js"></script>
-    <script src="views/js/ajax_request.js"></script>
-    <script src="views/js/Gallery.js"></script>
-    <script src="views/js/Modal.js"></script>
-    <script>
-      let gallery = new Gallery("#gallery > div img", "#gallery > ul a");
+  </footer>
+  <div id="modal-backdrop" class="modal-backdrop"></div>
+  <div id="login-modal" class="login-modal">
+    <form action="index.php?action=login" method="POST">
+      <div id="user-modal"><a href="#" class="close"><i class="fas fa-times"></i></a></div>
+      <h1>Connexion</h1>
+      <?php if (isset($message)) : ?>
+        <p> <?= $message ?> </p>
+      <?php endif; ?>
+      <label><b>Nom d'utilisateur</b></label>
+      <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+      <label><b>Mot de passe</b></label>
+      <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+      <input type="submit" id='submit' value='LOGIN'>
+      <a href="index.php?action=create_account">Créer un compte</a>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+  <script src="views/js/responsive_navbar.js"></script>
+  <script src="views/js/slick.js"></script>
+  <script src="views/js/ajax_request.js"></script>
+  <script src="views/js/Gallery.js"></script>
+  <script src="views/js/Modal.js"></script>
+  <script>
+    let gallery = new Gallery("#gallery > div img", "#gallery > ul a");
 
-      let modalConnexion = new Modal("#login-modal", "#modal-backdrop");
-      modalConnexion.addTrigger("#user-button", "open");
-      modalConnexion.addTrigger("#user-modal .close", "close");
-      
-      let modalConnexion2 = new Modal("#login-modal", "#modal-backdrop");
-      modalConnexion2.addTrigger("#user-button2", "open");
-      modalConnexion2.addTrigger("#user-modal .close", "close");
-      
-      let modalSort = new Modal("#sort-modal", "#modal-backdrop");
-      modalSort.addTrigger("#sort-button", "open");
-      modalSort.addTrigger("#sort-close .close", "close");
+    let modalConnexion = new Modal("#login-modal", "#modal-backdrop");
+    modalConnexion.addTrigger("#user-button", "open");
+    modalConnexion.addTrigger("#user-modal .close", "close");
 
-    </script>
-  </body>
+    let modalConnexion2 = new Modal("#login-modal", "#modal-backdrop");
+    modalConnexion2.addTrigger("#user-button2", "open");
+    modalConnexion2.addTrigger("#user-modal .close", "close");
+
+    let modalSort = new Modal("#sort-modal", "#modal-backdrop");
+    modalSort.addTrigger("#sort-button", "open");
+    modalSort.addTrigger("#sort-close .close", "close");
+
+  </script>
+</body>
+
 </html>

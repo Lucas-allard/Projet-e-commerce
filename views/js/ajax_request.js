@@ -70,7 +70,7 @@ function displayArticle(article) {
   console.log(article);
   $("#id_article").val(article[0]);
   $("#title").val(article[1]);
-  $("#content").val(article[2]);
+  $("#content").val(article[3]);
   $("#actual_image_src").val(article[3]);
   $("#image_alt").val(article[4]);
 }

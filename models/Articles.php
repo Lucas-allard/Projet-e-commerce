@@ -17,8 +17,6 @@ class Articles extends DataBase
 
     public function insertArticle($title, $content, $imageSrc, $imageAlt)
     {
-        var_dump($title);
-        var_dump($content);
         $query = $this->connexion->prepare('
                                             INSERT INTO `articles`(
                                                 `title`,
@@ -46,7 +44,45 @@ class Articles extends DataBase
                                             ');
         $test[] = $query2->execute([$imageSrc, $imageAlt, $id_article]);
 
-        var_dump($test);
+        return $test;
+    }
+
+    public function updateArticle($idArticle, $title, $content, $newImageSrc, $imageAlt)
+    {
+        $query = $this->connexion->prepare('
+                                            UPDATE
+                                                articles
+                                            SET
+                                                title = ?,
+                                                content = ?
+                                            WHERE
+                                                id_article = ?
+                                            ');
+        $test[] = $query->execute([$title, $content, $idArticle]);
+
+        $query = $this->connexion->prepare('
+                                            UPDATE
+                                                images
+                                            SET
+                                                image_src = ?,
+                                                image_alt = ?
+                                            WHERE
+                                                id_article = ?
+                                                ');
+        $test[] = $query->execute([$newImageSrc, $imageAlt, $idArticle]);
+
+        return $test;
+    }
+
+    public function delArticle($idArticle)
+    {
+        $query = $this->connexion->prepare('
+                                            DELETE FROM
+                                                articles
+                                            WHERE
+                                                id_article = ?
+                                            ');
+        $test = $query->execute([$idArticle]);
 
         return $test;
     }
@@ -55,9 +91,17 @@ class Articles extends DataBase
     {
         $query = $this->connexion->prepare('
                                     SELECT
-                                        *
+                                        articles.id_article,
+                                        title,
+                                        date_create,
+                                        content,
+                                        image_src,
+                                        image_alt
                                     FROM 
-                                        articles');
+                                        articles
+                                    INNER JOIN images ON articles.id_article = images.id_article
+                                    ORDER BY date_create DESC
+                                    ');
         $query->execute();
 
         $articles = $query->fetchAll();
@@ -68,12 +112,18 @@ class Articles extends DataBase
     public function getArticleById($id_article)
     {
         $query = $this->connexion->prepare('
-                                    SELECT
-                                        *
-                                    FROM 
-                                        articles
-                                    WHERE
-                                        id_article = ?');
+                                            SELECT
+                                                articles.id_article,
+                                                `title`,
+                                                date_create,
+                                                `content`,
+                                                image_src,
+                                                image_alt
+                                            FROM
+                                                `articles`
+                                            INNER JOIN images ON articles.id_article = images.id_article
+                                            WHERE
+                                                articles.id_article = ?');
         $query->execute([$id_article]);
 
         $article = $query->fetch();

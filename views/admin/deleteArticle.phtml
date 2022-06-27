@@ -1,0 +1,15 @@
+<div class="article-bg">
+  <div class="container">
+    <div>
+      <?php foreach ($articlesList as $article) : ?>
+        <div class="article-content">
+          <h2><?= $article["title"] ?></h1>
+            <p><em>Le <?= $article["date_create"] ?></em></p>
+            <p><?= substr($article["content"], 0, 255) . '...' ?></p>
+            <a href="index.php?action=details_article&id_article=<?= $article["id_article"] ?>"><button>En savoir plus</button></a>
+            <a href="index.php?admin=delete_article&id_article=<?= $article["id_article"] ?>"><button>Supprimer</button></a>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>

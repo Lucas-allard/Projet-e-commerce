@@ -11,6 +11,7 @@ use controllers\AboutController;
 use controllers\CartController;
 use controllers\OrderController;
 use controllers\ArticlesController;
+use controllers\CommentsController;
 
 function chargerClasse($classe)
 {
@@ -28,6 +29,7 @@ $userController = new UserController();
 $cartController = new CartController();
 $orderController = new OrderController();
 $articlesController = new ArticlesController();
+$commentsController = new CommentsController();
 
 if (array_key_exists('action', $_GET)) {
     switch ($_GET['action']) {
@@ -46,6 +48,15 @@ if (array_key_exists('action', $_GET)) {
             break;
         case 'detailsProduct':
             $productsController->detailsProduct();
+            break;
+        case 'articles':
+            $articlesController->articles();
+            break;
+        case 'details_article':
+            $articlesController->detailsArticle();
+            break;
+        case 'add_comment':
+            $commentsController->addComment();
             break;
         case 'about':
             $aboutController->about();
@@ -112,6 +123,11 @@ if (array_key_exists('action', $_GET)) {
             break;
         case 'edit_article':
             $articlesController->editArticle();
+            break;
+        case 'delete_article':
+            if (array_key_exists("id_article", $_GET)) {
+                $articlesController->deleteArticle();
+            }
             break;
         case 'searchArticle':
             if (array_key_exists('article', $_GET)) {

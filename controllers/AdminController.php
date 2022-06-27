@@ -33,17 +33,18 @@ class AdminController extends SecurityController
             $templateAdmin = 'addProduct';
         } elseif (isset($_GET['edit_product'])) {
             $products = $this->products->getProducts();
-
             $templateAdmin = 'editProduct';
         } elseif (isset($_GET['delete_product'])) {
             $productsList = $this->products->getProducts();
-
             $templateAdmin = 'deleteProduct';
         } elseif (isset($_GET['add_article'])) {
             $templateAdmin = 'addArticle';
         } elseif (isset($_GET['edit_article'])) {
-            $articles = $this->articles->getArticles();
+            $articlesList = $this->articles->getArticles();
             $templateAdmin = 'editArticle';
+        } elseif (isset($_GET['delete_article'])) {
+            $articlesList = $this->articles->getArticles();
+            $templateAdmin = 'deleteArticle';
         }
 
         if (

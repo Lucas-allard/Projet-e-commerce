@@ -354,20 +354,18 @@ td:nth-child(even) {
 
 /* Login & create account */
 
-.login-modal,
-.cart-modal {
+.login-modal {
   position: fixed;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   z-index: 1001;
   width: 700px;
-  margin: 0 auto;
+  margin: 0 2rem;
   display: none;
 }
 
-.login-modal.active,
-.cart-modal.active {
+.login-modal.active {
   display: block;
 }
 
@@ -380,8 +378,7 @@ td:nth-child(even) {
   cursor: pointer;
 }
 
-.create-account-block,
-.cart-modal {
+.create-account-block {
   padding: 2rem;
   border: 1px solid #f1f1f1;
   background: #fff;
@@ -391,6 +388,13 @@ td:nth-child(even) {
 .create-account {
   width: 700px;
   margin: 2rem auto;
+}
+
+@media screen and (max-width: 780px) {
+  .create-account,
+  .login-modal {
+    width: auto;
+  }
 }
 
 .login-modal form,
@@ -403,9 +407,9 @@ td:nth-child(even) {
 }
 .login-modal h1,
 .create-account h1 {
-  width: 38%;
   margin: 0 auto;
   padding-bottom: 10px;
+  font-size: 3rem;
 }
 
 .login-modal input[type="text"],

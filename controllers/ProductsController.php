@@ -142,22 +142,23 @@ class ProductsController extends SecurityController
 
     public function deleteProduct()
     {
-        if (isset($_GET['id_product']) && !empty($_GET['id_product'])) {
-            $id_product = $_GET['id_product'];
-            $product = $this->products->getProductById($id_product);
-            var_dump($product);
+        if ($this->isConnectAdmin()) {
+            if (isset($_GET['id_product']) && !empty($_GET['id_product'])) {
+                $id_product = $_GET['id_product'];
+                $product = $this->products->getProductById($id_product);
 
-            $test = $this->products->delProduct($id_product);
+                $test = $this->products->delProduct($id_product);
 
-            if ($test) {
-                $image = 'views/' . $product['image_src'];
-                unlink($image);
-                $message = 'delete OK';
-                header(
-                    'location:index.php?admin=login&delete_product&message=' .
-                        $message
-                );
-                exit();
+                if ($test) {
+                    $image = 'views/' . $product['image_src'];
+                    unlink($image);
+                    $message = 'delete OK';
+                    header(
+                        'location:index.php?admin=login&delete_product&message=' .
+                            $message
+                    );
+                    exit();
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace controllers;
 
 use models\Articles;
+use models\Comments;
 use controllers\SecurityController;
 
 class ArticlesController extends SecurityController
@@ -14,6 +15,7 @@ class ArticlesController extends SecurityController
     public function __construct()
     {
         $this->articles = new Articles();
+        $this->comments = new Comments();
     }
 
     public function addArticle()
@@ -117,12 +119,57 @@ class ArticlesController extends SecurityController
         }
     }
 
+    public function deleteArticle()
+    {
+        if ($this->isConnectAdmin()) {
+            if (isset($_GET['id_article']) && !empty($_GET['id_article'])) {
+                $idArticle = $_GET['id_article'];
+                $article = $this->articles->getArticleById($idArticle);
+
+                $test = $this->articles->delArticle($idArticle);
+
+                if ($test) {
+                    $image = 'views/' . $article['image_src'];
+                    unlink($image);
+                    $message = 'delete OK';
+                    header(
+                        'location:index.php?admin=login&delete_article&message=' .
+                            $message
+                    );
+                    exit();
+                }
+            }
+        }
+    }
+
     public function searchArticle()
     {
         if (array_key_exists('article', $_GET)) {
             $idArticle = $_GET['article'];
             $article = $this->articles->getArticleById($idArticle);
             echo json_encode($article);
+        }
+    }
+
+    public function articles(): void
+    {
+        $articlesList = $this->articles->getArticles();
+        $comments = $this->comments->getComments();
+
+        $template = 'articles/articles';
+
+        require 'views/layout.phtml';
+    }
+
+    public function detailsArticle(): void
+    {
+        if (array_key_exists("id_article", $_GET)) {
+            $idArticle = $_GET["id_article"];
+            $article = $this->articles->getArticleById($idArticle);
+            $comments = $this->comments->getCommentsById($idArticle);
+            $template = 'articles/detailsArticle';
+
+            require 'views/layout.phtml';
         }
     }
 }

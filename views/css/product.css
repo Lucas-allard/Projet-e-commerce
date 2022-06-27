@@ -9,6 +9,19 @@
   padding: 2rem 0 5rem 0;
 }
 
+@media screen and (max-width: 1100px) {
+  .product-block .container {
+    padding: 2rem 2rem 5rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .product-block .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* Gallery */
 
 .gallery {
@@ -19,6 +32,13 @@
 .gallery > div,
 .gallery > ul {
   margin: 2rem 5rem 0 0;
+}
+
+@media screen and (max-width: 780px) {
+  .gallery > div,
+  .gallery > ul {
+    margin: 2rem 0;
+  }
 }
 
 .img-sm {
