@@ -7,6 +7,10 @@
           <img src="<?= "views/" . $article["image_src"] ?>" alt="<?= $article["image_alt"]  ?>" class="align-right">
           <p><em>Le <?= $article["date_create"] ?></em></p>
           <p class="align-left"><?= nl2br($article["content"]) ?></p>
+          <div class='action'>
+            <a href="index.php?action=like&id_article=<?= $article['id_article'] ?>"><i class="fas fa-heart"></i><?= $likes ?></a>
+            <a href="index.php?action=dislike&id_article=<?= $article['id_article'] ?>"><i class="fas fa-heart"></i><?= $dislikes ?></a>
+          </div>
       </div>
     </div>
     <div class="form-comments">

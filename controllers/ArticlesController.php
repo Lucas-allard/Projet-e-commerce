@@ -6,6 +6,7 @@ namespace controllers;
 
 use models\Articles;
 use models\Comments;
+use models\Action;
 use controllers\SecurityController;
 
 class ArticlesController extends SecurityController
@@ -16,6 +17,7 @@ class ArticlesController extends SecurityController
     {
         $this->articles = new Articles();
         $this->comments = new Comments();
+        $this->action = new Action();
     }
 
     public function addArticle()
@@ -167,9 +169,18 @@ class ArticlesController extends SecurityController
             $idArticle = $_GET["id_article"];
             $article = $this->articles->getArticleById($idArticle);
             $comments = $this->comments->getCommentsById($idArticle);
+            $likes = $this->action->getLikes($idArticle);
+            $dislikes = $this->action->getDislikes($idArticle);
             $template = 'articles/detailsArticle';
 
             require 'views/layout.phtml';
         }
+    }
+
+    public function searchAjax($search)
+    {
+        $searchResult = $this->articles->searchArticle($search);
+
+        echo json_encode($searchResult);
     }
 }

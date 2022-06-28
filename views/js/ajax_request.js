@@ -28,6 +28,17 @@ function onAjaxRequest3() {
   );
 }
 
+function onAjaxRequest4() {
+  let search = $("#search_article").val();
+  if (search.length > 0) {
+    $.get("index.php?action=articles", "search=" + search, displayArticles);
+    $("#articles").addClass("hidden");
+  } else {
+    $("#search_article_result").empty();
+    $("#articles").removeClass("hidden");
+  }
+}
+
 function displayProducts(products) {
   products = JSON.parse(products);
   $("#search-result").empty();
@@ -75,8 +86,30 @@ function displayArticle(article) {
   $("#image_alt").val(article[4]);
 }
 
+function displayArticles(articles) {
+  articles = JSON.parse(articles);
+  console.log(articles);
+  $("#search_article_result").empty();
+  for (let i = 0; i < articles.length; i++) {
+    $("#search_article_result").append(`<div class="article-content">
+                                          <h2>${articles[i].title}</h1>
+                                            <p><em>Le ${
+                                              articles[i].date_create
+                                            }</em></p>
+                                            <p>${articles[i].content.substring(
+                                              0,
+                                              255
+                                            )} ...</p>
+                                            <a href="index.php?action=details_article&id_article=${
+                                              articles[i].id_article
+                                            }"><button>En savoir plus</button></a>
+                                        </div>`);
+  }
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
   $("#search").on("input", onAjaxRequest);
   $("#product").on("change", onAjaxRequest2);
   $("#article").on("change", onAjaxRequest3);
+  $("#search_article").on("input", onAjaxRequest4);
 });

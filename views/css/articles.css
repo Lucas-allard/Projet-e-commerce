@@ -10,6 +10,29 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.action > a > i {
+  font-size: 3rem;
+  margin: 2rem;
+  transition: all 0.3s;
+}
+
+.action {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.action > a:hover > i {
+  transform: scale(1.2);
+}
+
+.action a:first-child {
+  color: #0077ef;
+}
+
+.action a:last-child {
+  color: #b82010;
+}
+
 .flex-container {
   display: flex;
 }

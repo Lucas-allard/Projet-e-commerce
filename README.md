@@ -47,10 +47,9 @@ Catalogue :
 
 Blog :
 
-1.  Like article (not done) NEXT SPRINT
+1.  Like article (done)
 2.  Comment article (done)
-3.  Button for sorting article (not done) NEXT SPRINT
-4.  Article search bar by name, category (ajax request) (not done) NEXT SPRINT
+3.  Article search bar by name (ajax request) (done)
 
 Contact :
 
@@ -67,7 +66,7 @@ Admin :
 
 1.  Add, remove & edit product (done)
 2.  Add, remove & edit article (done)
-3.  Add, remove & edit comment (in progress) NEXT SPRINT
+3.  Add, remove & edit comment (done)
 4.  See, remove & edit order (not done)
 <!-- CONTACT -->
 

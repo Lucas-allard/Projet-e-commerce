@@ -8,6 +8,7 @@ use controllers\UserController;
 use controllers\AdminController;
 use controllers\ProductsController;
 use controllers\AboutController;
+use controllers\ActionController;
 use controllers\CartController;
 use controllers\OrderController;
 use controllers\ArticlesController;
@@ -30,6 +31,7 @@ $cartController = new CartController();
 $orderController = new OrderController();
 $articlesController = new ArticlesController();
 $commentsController = new CommentsController();
+$actionController = new ActionController();
 
 if (array_key_exists('action', $_GET)) {
     switch ($_GET['action']) {
@@ -50,10 +52,24 @@ if (array_key_exists('action', $_GET)) {
             $productsController->detailsProduct();
             break;
         case 'articles':
-            $articlesController->articles();
+            if (array_key_exists('search', $_GET)) {
+                $articlesController->searchAjax($_GET['search']);
+            } else {
+                $articlesController->articles();
+            }
             break;
         case 'details_article':
             $articlesController->detailsArticle();
+            break;
+        case 'like':
+            if (array_key_exists('id_article', $_GET)) {
+                $actionController->addLike();
+            }
+            break;
+        case 'dislike':
+            if (array_key_exists('id_article', $_GET)) {
+                $actionController->addDislike();
+            }
             break;
         case 'add_comment':
             $commentsController->addComment();
@@ -132,6 +148,19 @@ if (array_key_exists('action', $_GET)) {
         case 'searchArticle':
             if (array_key_exists('article', $_GET)) {
                 $articlesController->searchArticle($_GET['article']);
+            }
+            break;
+        case 'edit_comment':
+            if (array_key_exists('id_comment', $_GET)) {
+                $commentsController->displayComment();
+            } else {
+                var_dump('hello 1');
+                $commentsController->editComment();
+            }
+            break;
+        case 'delete_comment':
+            if (array_key_exists('id_comment', $_GET)) {
+                $commentsController->deleteComment();
             }
             break;
         default:

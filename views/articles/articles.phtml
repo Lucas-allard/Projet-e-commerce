@@ -3,14 +3,24 @@
     <div class="flex-container">
       <div class="article-block">
         <h1>Blog Camiseta</h1>
-        <?php foreach ($articlesList as $article) : ?>
-          <div class="article-content">
-            <h2><?= $article["title"] ?></h1>
-              <p><em>Le <?= $article["date_create"] ?></em></p>
-              <p><?= substr($article["content"], 0, 255) . '...' ?></p>
-              <a href="index.php?action=details_article&id_article=<?= $article["id_article"] ?>"><button>En savoir plus</button></a>
+        <form class="search-form">
+          <div class="field">
+            <input type="text" name="search" id="search_article" placeholder="Recherche d'articles">
+            <i class="fas fa-search"></i>
           </div>
-        <?php endforeach; ?>
+        </form>
+        <div id="search_article_result">
+        </div>
+        <div id="articles">
+          <?php foreach ($articlesList as $article) : ?>
+            <div class="article-content">
+              <h2><?= $article["title"] ?></h1>
+                <p><em>Le <?= $article["date_create"] ?></em></p>
+                <p><?= substr($article["content"], 0, 255) . '...' ?></p>
+                <a href="index.php?action=details_article&id_article=<?= $article["id_article"] ?>"><button>En savoir plus</button></a>
+            </div>
+          <?php endforeach; ?>
+        </div>
       </div>
       <aside>
         <div class="article-comments">
@@ -25,6 +35,5 @@
         </div>
       </aside>
     </div>
-
   </div>
 </div>

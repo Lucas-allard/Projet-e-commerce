@@ -1,0 +1,12 @@
+<div class="article-comments">
+  <h3>Commentaires</h3>
+  <?php foreach ($comments as $comment) : ?>
+    <div class="comments-content">
+      <p>Posté par <?= $comment['last_name'] . " " . $comment['name'] ?></p>
+      <p>Article : <?= $comment['title'] ?></p>
+      <p><em>Le <?= $comment['date_create'] ?></em></p>
+      <p><?= $comment['content'] ?></p>
+      <a href="index.php?admin=edit_comment&id_comment=<?= $comment['id_comment'] ?>"><button>Editer le commentaire</button></a>
+    </div>
+  <?php endforeach; ?>
+</div>

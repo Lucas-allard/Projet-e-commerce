@@ -130,4 +130,23 @@ class Articles extends DataBase
 
         return $article;
     }
+
+    public function searchArticle($search)
+    {
+        $query = $this->connexion->prepare('
+                                            SELECT
+                                                `id_article`,
+                                                `title`,
+                                                date_create,
+                                                `content`
+                                            FROM
+                                                articles
+                                            WHERE `title` LIKE ?
+                                            ');
+        $query->execute(['%' . $search . '%']);
+
+        $searchResult = $query->fetchAll();
+
+        return $searchResult;
+    }
 }

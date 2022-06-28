@@ -1,0 +1,27 @@
+<div class="form-comments">
+  <form action="index.php?admin=edit_comment" method="post" class="form-features">
+    <input type="hidden" name="id_comment" value="<?= $comment["id_comment"]  ?>" />
+    <div class="field">
+      <label for="lastName">Nom</label>
+      <input type="text" placeholder="Nom" name="last_name" value="<?= $comment["last_name"]  ?>">
+    </div>
+    <div class="field">
+      <label for="name">Prénom</label>
+      <input type="text" placeholder="Prenom" name="name" value="<?= $comment["name"]  ?>">
+    </div>
+    <div class="field relative">
+      <label for="content">Votre commentaire</label>
+      <textarea name="content" id="comments"><?= $comment["content"] ?></textarea>
+      <div class="lenght-comment" id="compteur">0</div>
+    </div>
+    <div class="field">
+      <input type="submit" value="Ajouter">
+    </div>
+  </form>
+</div>
+<script>
+  let comments = document.getElementById('comments')
+  comments.addEventListener('keyup', function() {
+    document.getElementById('compteur').innerHTML = comments.value.length;
+  });
+</script>

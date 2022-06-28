@@ -7,6 +7,7 @@ namespace controllers;
 use models\Admin;
 use models\Products;
 use models\Articles;
+use models\Comments;
 use controllers\SecurityController;
 
 class AdminController extends SecurityController
@@ -18,6 +19,7 @@ class AdminController extends SecurityController
         $this->admin = new Admin();
         $this->products = new Products();
         $this->articles = new Articles();
+        $this->comments = new Comments();
     }
 
     // public function create_admin(){
@@ -45,6 +47,12 @@ class AdminController extends SecurityController
         } elseif (isset($_GET['delete_article'])) {
             $articlesList = $this->articles->getArticles();
             $templateAdmin = 'deleteArticle';
+        } elseif (isset($_GET['edit_comment'])) {
+            $comments = $this->comments->getCommentsForAdmin();
+            $templateAdmin = 'editComment';
+        } elseif (isset($_GET['delete_comment'])) {
+            $comments = $this->comments->getCommentsForAdmin();
+            $templateAdmin = 'deleteComment';
         }
 
         if (
