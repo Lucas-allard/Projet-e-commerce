@@ -2,7 +2,7 @@
   <h2>Editer un article de votre blog</h2>
   <form action="index.php?admin=edit_article" method="post" class="form-features" enctype="multipart/form-data">
     <div class="field">
-      <label for="articles">Veuillez choisir un produit </label>
+      <label for="articles">Veuillez choisir un article </label>
       <select name="articles" id="article">
         <option value="hello">0 </option>
         <?php foreach ($articles as $article): ?>
@@ -29,7 +29,7 @@
       <input type="text" name="image_alt" id="image_alt" required>
     </div>
     <div class="field">
-      <input type="submit" value="Ajouter">
+      <input type="submit" value="Editer">
     </div>
   </form>
 </div>

@@ -20,7 +20,6 @@ function onAjaxRequest2() {
 
 function onAjaxRequest3() {
   let idArticle = $("#article").val();
-  console.log(idArticle);
   $.getJSON(
     "index.php?admin=searchArticle",
     "article=" + idArticle,
@@ -37,6 +36,11 @@ function onAjaxRequest4() {
     $("#search_article_result").empty();
     $("#articles").removeClass("hidden");
   }
+}
+
+function onAjaxRequest5() {
+  let idOrder = $("#orders").val();
+  $.getJSON("index.php?admin=searchOrder", "order=" + idOrder, displayOrder);
 }
 
 function displayProducts(products) {
@@ -78,7 +82,6 @@ function displayProduct(product) {
 }
 
 function displayArticle(article) {
-  console.log(article);
   $("#id_article").val(article[0]);
   $("#title").val(article[1]);
   $("#content").val(article[3]);
@@ -88,7 +91,6 @@ function displayArticle(article) {
 
 function displayArticles(articles) {
   articles = JSON.parse(articles);
-  console.log(articles);
   $("#search_article_result").empty();
   for (let i = 0; i < articles.length; i++) {
     $("#search_article_result").append(`<div class="article-content">
@@ -107,9 +109,27 @@ function displayArticles(articles) {
   }
 }
 
+function displayOrder(orders) {
+  if ($("#orders").val() === "default") {
+    $("#order-table").show();
+  } else {
+    $("#order-table").hide();
+    $("#order-details").empty();
+    $("#order-details").append(`
+                                <div  class="order-details">
+                                  <p><em>Commande N° ${orders[0]["id_order"]}</em></p>
+                                  <ul>
+                                    <li>Commande effectuée le ${orders[0]["order_date"]} par ${orders[0]["lastname"]} ${orders[0]["name"]}</li>
+                                    <li>Statut : ${orders[0]["statut"]} <a href="index.php?admin=valid_order&id_order= ${orders[0]["id_order"]}"><button>Valider l'expédition de la commande</button></a> <a href="index.php?admin=delete_order&id_order= ${orders[0]["id_order"]}"><button>Supprimer la commande</button></a></li>
+                                  </ul>
+                                `);
+  }
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
   $("#search").on("input", onAjaxRequest);
   $("#product").on("change", onAjaxRequest2);
   $("#article").on("change", onAjaxRequest3);
   $("#search_article").on("input", onAjaxRequest4);
+  $("#orders").on("change", onAjaxRequest5);
 });

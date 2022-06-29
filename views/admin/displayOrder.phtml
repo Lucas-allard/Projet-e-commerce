@@ -1,0 +1,33 @@
+<div class="admin-features-block">
+  <h2>Commandes détaillées</h2>
+  <div>
+    <table class="order-table" id="order-table">
+      <thead>
+        <tr>
+          <th>Numéro de la commande</th>
+          <th>Prix total</th>
+          <th>Date de commande</th>
+          <th>Date d'expédition</th>
+          <th>Statut</th>
+          <th>Nom/Prénom du client</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($orders as $order) : ?>
+          <tr>
+            <td><a href="index.php?admin=order_detail&id_order=<?= $order['id_order'] ?>"><?= $order['id_order'] ?></a></td>
+            <td><a href="index.php?admin=order_detail&id_order=<?= $order['id_order'] ?>"><?= number_format($order['total_price'], 2, ',', ' ',) ?> €</a></td>
+            <td><a href="index.php?admin=order_detail&id_order=<?= $order['id_order'] ?>"><?= $order['order_date'] ?></a></td>
+            <td><a href="index.php?admin=order_detail&id_order=<?= $order['id_order'] ?>"><?= $order['shipped_date'] ?></a></td>
+            <td><a href="index.php?admin=order_detail&id_order=<?= $order['id_order'] ?>"><?= $order['statut'] ?></a></td>
+            <td><a href="index.php?admin=order_detail&id_order=<?= $order['id_order'] ?>"><?= $order['lastname'] . " " . $order['name'] ?></a></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+  <div id="order-details">
+
+  </div>
+</div>
+</div>

@@ -94,3 +94,42 @@
 .form-features .field + .field {
   border-top: 1px solid white;
 }
+
+/* Order */
+
+.order-table {
+  background-color: white;
+  width: auto;
+}
+
+.order-table th {
+  padding: 2rem 0;
+}
+.order-table th,
+.order-table td {
+  text-align: center;
+}
+
+.order-details,
+.detail-order-bg {
+  background-color: white;
+}
+
+.detail-order-bg ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.detail-order-bg ul li {
+  padding: 1rem;
+  font-size: 2rem;
+  width: 50%;
+  text-align: center;
+}
+
+.detail-order-bg ul li span {
+  color: var(--text-color-secondary);
+}
+

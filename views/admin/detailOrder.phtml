@@ -1,0 +1,29 @@
+<div class="detail-order-bg">
+  <div class="container">
+    <ul>
+      <li>Commande réalisé le : <span><?= $orders[0]['order_date'] ?></span> </li>
+      <li>Client : <span><?= $orders[0]['lastname'] ?> <?= $orders[0]['name'] ?></span></li>
+      <li>Statut : <span><?= $orders[0]['statut'] ?></span></li>
+      <li>Montant total : <span><?= $orders[0]['total_price'] ?> €</span></li>
+    </ul>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Produits</th>
+            <th>Quantités</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($orders as $order) : ?>
+            <tr>
+              <td><?= $order['product_name'] ?></td>
+              <td><?= $order['quantity'] ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

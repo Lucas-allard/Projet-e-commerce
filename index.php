@@ -154,13 +154,32 @@ if (array_key_exists('action', $_GET)) {
             if (array_key_exists('id_comment', $_GET)) {
                 $commentsController->displayComment();
             } else {
-                var_dump('hello 1');
                 $commentsController->editComment();
             }
             break;
         case 'delete_comment':
             if (array_key_exists('id_comment', $_GET)) {
                 $commentsController->deleteComment();
+            }
+            break;
+        case 'searchOrder':
+            if (array_key_exists('order', $_GET)) {
+                $orderController->searchOrder();
+            }
+            break;
+        case 'order_detail':
+            if (array_key_exists('id_order', $_GET)) {
+                $orderController->displayOrder();
+            }
+            break;
+        case 'valid_order':
+            if (array_key_exists('id_order', $_GET)) {
+                $orderController->validOrderExpedition();
+            }
+            break;
+        case 'delete_order':
+            if (array_key_exists('id_order', $_GET)) {
+                $orderController->validOrderExpedition();
             }
             break;
         default:

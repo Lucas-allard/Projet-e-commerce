@@ -12,20 +12,20 @@ class Cart extends DataBase
 
     public function __construct()
     {
-        $this -> connexion = $this -> getConnexion();
+        $this->connexion = $this->getConnexion();
     }
 
     public function getCartSession()
     {
         if (isset($_SESSION['user']['panier'])) {
             $ids = array_keys($_SESSION['user']['panier']);
-      
+
             return $ids;
         } else {
             return [];
         }
     }
- 
+
     public function addToCart($id_product)
     {
         if (!isset($_SESSION['user']['panier'])) {
@@ -57,7 +57,7 @@ class Cart extends DataBase
             }
         }
     }
-  
+
     public function deleteFromCart($id_product)
     {
         if (isset($_SESSION['user']['panier'])) {
@@ -68,7 +68,7 @@ class Cart extends DataBase
     public function displayCart($ids)
     {
         if (!empty($ids)) {
-            $query = $this -> connexion -> prepare('
+            $query = $this->connexion->prepare('
                                             SELECT
                                               products.`id_product`,
                                               `product_name`,
@@ -80,18 +80,18 @@ class Cart extends DataBase
                                             FROM
                                               products
                                             INNER JOIN images ON products.id_product = images.id_product
-                                            WHERE products.id_product IN ('.implode(",", $ids).')
+                                            WHERE products.id_product IN (' . implode(",", $ids) . ')
                                             ');
-            $query -> execute();
-  
-            $productsList = $query -> fetchAll();
-  
+            $query->execute();
+
+            $productsList = $query->fetchAll();
+
             return $productsList;
         } else {
             return null;
         }
     }
-  
+
     public function getTotalPricePerProduct($product, $id_product)
     {
         if (isset($_SESSION['user']['panier'])) {
@@ -103,7 +103,7 @@ class Cart extends DataBase
             return $totalPricePerProduct;
         }
     }
-  
+
     public function getProductsPrice($product, $id_product)
     {
         if (isset($_SESSION['user']['panier'])) {
@@ -115,7 +115,7 @@ class Cart extends DataBase
             return $totalProductsPrice;
         }
     }
-  
+
     public function getTotalPrice($totalProductsPrice, $deliveryPrice)
     {
         if (isset($_SESSION['user']['panier'])) {

@@ -8,6 +8,7 @@ use models\Admin;
 use models\Products;
 use models\Articles;
 use models\Comments;
+use models\Order;
 use controllers\SecurityController;
 
 class AdminController extends SecurityController
@@ -20,6 +21,7 @@ class AdminController extends SecurityController
         $this->products = new Products();
         $this->articles = new Articles();
         $this->comments = new Comments();
+        $this->order = new Order();
     }
 
     // public function create_admin(){
@@ -53,6 +55,12 @@ class AdminController extends SecurityController
         } elseif (isset($_GET['delete_comment'])) {
             $comments = $this->comments->getCommentsForAdmin();
             $templateAdmin = 'deleteComment';
+        } elseif (isset($_GET['edit_order'])) {
+            $orders = $this->order->getOrders();
+            $templateAdmin = 'editOrder';
+        } elseif (isset($_GET['order'])) {
+            $orders = $this->order->getOrders();
+            $templateAdmin = 'displayOrder';
         }
 
         if (
