@@ -70,6 +70,12 @@ Admin :
 4.  See, remove & edit order (not done)
 <!-- CONTACT -->
 
+
+TO FIX : 
+
+1. error on modal js in console
+2. check why can't open the modal sort when user is connect
+
 ## Contact
 
 Lucas Allard - allard.lucas.97@gmail.com
