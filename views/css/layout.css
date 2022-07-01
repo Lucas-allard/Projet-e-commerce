@@ -378,27 +378,31 @@ td:nth-child(even) {
   cursor: pointer;
 }
 
-.create-account-block {
+.create-account-block,
+.contact-block {
   padding: 2rem;
   border: 1px solid #f1f1f1;
   background: #fff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.create-account {
+.create-account,
+.contact {
   width: 700px;
   margin: 2rem auto;
 }
 
 @media screen and (max-width: 780px) {
   .create-account,
-  .login-modal {
+  .login-modal,
+  .contact {
     width: auto;
   }
 }
 
 .login-modal form,
-.create-account form {
+.create-account form,
+.contact form {
   width: 100%;
   padding: 30px;
   border: 1px solid #f1f1f1;
@@ -406,7 +410,8 @@ td:nth-child(even) {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .login-modal h1,
-.create-account h1 {
+.create-account h1,
+.contact h1 {
   margin: 0 auto;
   padding-bottom: 10px;
   font-size: 3rem;
@@ -418,13 +423,19 @@ td:nth-child(even) {
 .create-account input[type="password"],
 .create-account input[type="date"],
 .create-account input[type="mail"],
-.create-account a {
+.create-account a,
+.contact input[type="mail"],
+.contact select,
+.contact textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+.contact textarea {
+  height: 200px;
 }
 
 .login-modal a,
@@ -436,7 +447,8 @@ td:nth-child(even) {
 .login-modal input[type="submit"],
 .login-modal a,
 .create-account input[type="submit"],
-.create-account a {
+.create-account a,
+.contact input[type="submit"] {
   background-color: var(--text-color-secondary);
   color: white;
   padding: 14px 20px;

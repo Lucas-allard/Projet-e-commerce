@@ -53,7 +53,7 @@ Blog :
 
 Contact :
 
-1.  Not define
+1.  Receive contact demand in mailbox (done)
 
 Cart :
 
@@ -67,14 +67,7 @@ Admin :
 1.  Add, remove & edit product (done)
 2.  Add, remove & edit article (done)
 3.  Add, remove & edit comment (done)
-4.  See, remove & edit order (not done)
-<!-- CONTACT -->
-
-
-TO FIX : 
-
-1. error on modal js in console
-2. check why can't open the modal sort when user is connect
+4.  See, remove & edit order (done)
 
 ## Contact
 

@@ -1,0 +1,26 @@
+<div class="contact-block">
+  <div class="contact">
+    <form action="index.php?action=send_mail" method="POST">
+      <h1>Une question, une réclamation ? Contactez notre service de support</h1>
+      <?php if (isset($message)) : ?>
+        <p> <?= $message ?> </p>
+      <?php endif; ?>
+      <?php if (array_key_exists("message", $_GET)) : ?>
+        <p> <?= $_GET["message"] ?> </p>
+      <?php endif; ?>
+      <label><b>Email</b></label>
+      <input type="mail" placeholder="Saisir votre email pour que l'on puisse vous recontacter" name="mail" required>
+      <label><b>Sujet</b></label>
+      <select name="subject">
+        <option>Veuillez choisir une catégorie</option>
+        <option value="Erreur sur la commande">Erreur sur la commande</option>
+        <option value="Erreur sur la livraison">Erreur sur la livraison</option>
+        <option value="Option3">Option 3</option>
+      </select>
+      <label><b>Corp du message</b></label>
+      <textarea name="content">Saisir ici le corp de votre message</textarea>
+      <input type="submit" value='Envoyer'>
+
+    </form>
+  </div>
+</div>

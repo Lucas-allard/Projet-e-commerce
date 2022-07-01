@@ -8,11 +8,13 @@ use controllers\UserController;
 use controllers\AdminController;
 use controllers\ProductsController;
 use controllers\AboutController;
+use controllers\ContactController;
 use controllers\ActionController;
 use controllers\CartController;
 use controllers\OrderController;
 use controllers\ArticlesController;
 use controllers\CommentsController;
+use controllers\MailController;
 
 function chargerClasse($classe)
 {
@@ -25,6 +27,7 @@ spl_autoload_register('chargerClasse'); //fin Autoload
 $sliderController = new SliderController();
 $productsController = new ProductsController();
 $aboutController = new AboutController();
+$contactController = new ContactController();
 $adminController = new AdminController();
 $userController = new UserController();
 $cartController = new CartController();
@@ -32,6 +35,7 @@ $orderController = new OrderController();
 $articlesController = new ArticlesController();
 $commentsController = new CommentsController();
 $actionController = new ActionController();
+$mailController = new MailController();
 
 if (array_key_exists('action', $_GET)) {
     switch ($_GET['action']) {
@@ -76,6 +80,12 @@ if (array_key_exists('action', $_GET)) {
             break;
         case 'about':
             $aboutController->about();
+            break;
+        case 'contact':
+            $contactController->contact();
+            break;
+        case 'send_mail':
+            $mailController->sendMail();
             break;
         case 'login':
             $userController->loginUser();
